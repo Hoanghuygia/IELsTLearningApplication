@@ -1,0 +1,30 @@
+{
+  "name": "core",
+  "version": "1.0.0",
+  "description": "The core for IELtSLearningApplication",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hoanghuygia/IELsTLearningApplication.git"
+  },
+  "keywords": [
+    "N/A"
+  ],
+  "author": "Hoang Gia Huy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hoanghuygia/IELsTLearningApplication/issues"
+  },
+  "homepage": "https://github.com/Hoanghuygia/IELsTLearningApplication#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "http-errors": "^2.0.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.7"
+  }
+}
