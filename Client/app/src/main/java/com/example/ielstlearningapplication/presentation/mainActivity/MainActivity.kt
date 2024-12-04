@@ -21,11 +21,11 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         installSplashScreen().apply {
-            setKeepOnScreenCondition(condition = {viewModel.splashCondition.value})
+            setKeepOnScreenCondition(condition = { viewModel.splashCondition.value })
         }
         setContent {
             IELsTLearningApplicationTheme {
-                Box(modifier = Modifier.background(MaterialTheme.colorScheme.background)){
+                Box(modifier = Modifier.background(MaterialTheme.colorScheme.background)) {
                     NavGraph(startDestination = viewModel.startDestination.value)
                 }
             }
@@ -34,7 +34,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Preview(showBackground = true)
-@Preview(uiMode = UI_MODE_NIGHT_YES, showBackground= true)
+@Preview(uiMode = UI_MODE_NIGHT_YES, showBackground = true)
 @Composable
 fun Preview() {
 }

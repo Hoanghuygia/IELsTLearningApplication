@@ -69,6 +69,10 @@ dependencies {
     // Navigation
     val nav_version = "2.8.4"
     implementation("androidx.navigation:navigation-compose:$nav_version")
+
+    // Icon
+    implementation("androidx.compose.material:material-icons-extended")
+
 }
 
 kapt {

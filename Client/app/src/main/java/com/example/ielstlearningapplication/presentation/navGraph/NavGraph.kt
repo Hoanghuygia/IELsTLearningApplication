@@ -4,8 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.compose.composable
-import androidx.navigation.navigation
-import com.example.ielstlearningapplication.presentation.pages.HomePage.components.HomePageScreen
+import com.example.ielstlearningapplication.presentation.pages.HomePage.HomePageScreen
 import com.example.ielstlearningapplication.presentation.pages.Login.LoginScreen
 
 @Composable
@@ -22,7 +21,6 @@ fun NavGraph(startDestination: String) {
             )
         }
 
-        // Home Screen
         composable(route = Route.HomeScreen.route) {
             HomePageScreen()
         }
