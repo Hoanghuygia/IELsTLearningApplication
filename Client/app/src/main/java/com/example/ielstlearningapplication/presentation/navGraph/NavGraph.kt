@@ -21,7 +21,6 @@ fun NavGraph(startDestination: String) {
             )
         }
 
-        // Home Screen
         composable(route = Route.HomeScreen.route) {
             HomePageScreen()
         }

@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -16,8 +17,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.ielstlearningapplication.presentation.pages.HomePage.components.BottomBar
+import com.example.ielstlearningapplication.presentation.pages.HomePage.components.ContentHolder
 import com.example.ielstlearningapplication.presentation.pages.HomePage.components.ProfileHolder
+import com.example.ielstlearningapplication.presentation.pages.HomePage.data.HomeScreenData
 import com.example.ielstlearningapplication.presentation.pages.HomePage.data.user
 import com.example.ielstlearningapplication.ui.theme.IELsTLearningApplicationTheme
 
@@ -36,17 +40,20 @@ fun HomePageScreen() {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color.White),
-            verticalArrangement = Arrangement.Center,
+                .background(Color.White)
+                .padding(start = 32.dp, end = 32.dp, top = 50.dp),
+            verticalArrangement = Arrangement.spacedBy(32.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            ProfileHolder(user, modifier = Modifier.weight(1f))
-            Box(
-                modifier = Modifier
-                    .weight(4f)
-                    .background(Color.Red)
-            ) {
-                Text(text = "Home Page screen")
+            ProfileHolder(user, modifier = Modifier)
+
+            val homePageItemLength = HomeScreenData.homePageItem.size
+            if (homePageItemLength % 2 == 0) {
+                for (i in 0 until homePageItemLength - 1 step 2) {
+                    val first = HomeScreenData.homePageItem[i]
+                    val second = HomeScreenData.homePageItem[i + 1]
+                    ContentHolder(first, second, modifier = Modifier)
+                }
             }
         }
     }

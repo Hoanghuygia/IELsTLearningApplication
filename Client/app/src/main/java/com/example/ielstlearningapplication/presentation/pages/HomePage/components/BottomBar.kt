@@ -31,9 +31,9 @@ fun BottomBar(
                     }) {
                         Icon(
                             imageVector = if (bottomNavState == index) {
-                                screen.selectedIcon
+                                screen.iconFilled
                             } else {
-                                screen.unselectedIcon
+                                screen.iconOutlined
                             },
                             contentDescription = screen.title
                         )

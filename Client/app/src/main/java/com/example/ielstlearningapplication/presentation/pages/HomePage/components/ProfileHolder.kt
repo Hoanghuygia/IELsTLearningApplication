@@ -1,17 +1,12 @@
 package com.example.ielstlearningapplication.presentation.pages.HomePage.components
 
-import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -34,7 +29,7 @@ import com.example.ielstlearningapplication.ui.theme.IELsTLearningApplicationThe
 @Composable
 fun ProfileHolder(currentUser: FakeUser, modifier: Modifier) {
     Card(
-        modifier = Modifier.padding(32.dp),
+//        modifier = Modifier.padding(top = 32.dp, start = 32.dp, end = 32.dp),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.tertiary
         )
@@ -58,7 +53,7 @@ fun ProfileHolder(currentUser: FakeUser, modifier: Modifier) {
 
             Column(
                 modifier = Modifier
-                    .weight(3f) // Chiếm 3/4 Row
+                    .weight(3f)
                     .padding(16.dp)
             ) {
                 Text(
@@ -67,7 +62,8 @@ fun ProfileHolder(currentUser: FakeUser, modifier: Modifier) {
                 )
                 Text(
                     text = currentUser.name,
-                    fontWeight = FontWeight.Bold
+                    fontWeight = FontWeight.Bold,
+                    color = Color.Yellow
                 )
             }
         }
