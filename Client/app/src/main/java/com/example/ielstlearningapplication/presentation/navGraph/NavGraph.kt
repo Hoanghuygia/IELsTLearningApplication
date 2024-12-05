@@ -6,6 +6,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.compose.composable
 import com.example.ielstlearningapplication.presentation.pages.HomePage.HomePageScreen
 import com.example.ielstlearningapplication.presentation.pages.Login.LoginScreen
+import com.example.ielstlearningapplication.presentation.pages.Profile.ProfileScreen
 
 @Composable
 fun NavGraph(startDestination: String) {
@@ -22,7 +23,13 @@ fun NavGraph(startDestination: String) {
         }
 
         composable(route = Route.HomeScreen.route) {
-            HomePageScreen()
+            HomePageScreen(
+                navController = navController
+            )
+        }
+
+        composable(route = Route.ProfileScreen.route){
+            ProfileScreen()
         }
     }
 }
