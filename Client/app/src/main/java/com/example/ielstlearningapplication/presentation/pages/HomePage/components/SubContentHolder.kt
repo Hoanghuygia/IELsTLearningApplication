@@ -25,14 +25,15 @@ import com.example.ielstlearningapplication.presentation.pages.HomePage.data.Hom
 import com.example.ielstlearningapplication.ui.theme.IELsTLearningApplicationTheme
 
 @Composable
-fun SubContentHolder(homeScrenItem: HomeScrenItem, modifier: Modifier = Modifier) {
+fun SubContentHolder(homeScrenItem: HomeScrenItem, onEvent: () -> Unit, modifier: Modifier = Modifier) {
     Card(
         modifier = modifier
             .aspectRatio(1f),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.tertiary
         ),
-        shape = RoundedCornerShape(32.dp)
+        shape = RoundedCornerShape(32.dp),
+        onClick = onEvent
     ) {
         Column(
             modifier = Modifier
@@ -61,6 +62,6 @@ fun SubContentHolder(homeScrenItem: HomeScrenItem, modifier: Modifier = Modifier
 @Composable
 fun PreviewSubContentHolder() {
     IELsTLearningApplicationTheme {
-        SubContentHolder(HomeScreenData.homePageItem[0], modifier = Modifier)
+        SubContentHolder(HomeScreenData.homePageItem[0], onEvent = {}, modifier = Modifier)
     }
 }

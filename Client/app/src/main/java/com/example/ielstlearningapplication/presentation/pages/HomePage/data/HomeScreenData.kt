@@ -74,32 +74,38 @@ object HomeScreenData {
         HomeScrenItem(
             title = "Read",
             iconFocus = Icons.Filled.ImportContacts,
-            iconNormal = Icons.Outlined.ImportContacts
+            iconNormal = Icons.Outlined.ImportContacts,
+            route = "onReadingScreen"
         ),
         HomeScrenItem(
             title = "Listen",
             iconFocus = Icons.Filled.Headphones,
-            iconNormal = Icons.Outlined.Headphones
+            iconNormal = Icons.Outlined.Headphones,
+            route = "onListeningScreen"
         ),
         HomeScrenItem(
             title = "Write",
             iconFocus = Icons.Filled.Draw,
-            iconNormal = Icons.Outlined.Draw
+            iconNormal = Icons.Outlined.Draw,
+            route = "onWritingScreen"
         ),
         HomeScrenItem(
             title = "Speak",
             iconFocus = Icons.Filled.Mic,
-            iconNormal = Icons.Outlined.Mic
+            iconNormal = Icons.Outlined.Mic,
+            route = "onSpeakingScreen"
         ),
         HomeScrenItem(
             title = "My words",
             iconFocus = Icons.Filled.Book,
-            iconNormal = Icons.Outlined.Book
+            iconNormal = Icons.Outlined.Book,
+            route = "onLibraryScreen"
         ),
         HomeScrenItem(
             title = "Chat with AI",
             iconFocus = Icons.Filled.Forum,
-            iconNormal = Icons.Outlined.Forum
+            iconNormal = Icons.Outlined.Forum,
+            route = "onAIScreen"
         ),
     )
 }

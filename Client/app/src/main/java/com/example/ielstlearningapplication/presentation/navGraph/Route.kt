@@ -6,9 +6,11 @@ sealed class Route(
     object HomeScreen: Route(route = "onHomeScreen")
     object LoginScreen: Route(route = "onLoginScreen")
     object SignupScreen: Route(route = "onSignupScreen")
+    object ProfileScreen: Route(route = "onProfileScreen")
     object ReadingScreen: Route(route = "onReadingScreen")
+    object ListeningScreen: Route(route = "onListeningScreen")
     object WritingScreen: Route(route = "onWritingScreen")
     object SpeakingScreen: Route(route = "onSpeakingScreen")
-    object ListeningScreen: Route(route = "onListeningScreen")
-    object ProfileScreen: Route(route = "onProfileScreen")
+    object LibraryScreen: Route(route = "onLibraryScreen")
+    object AIScreen: Route(route = "onAIScreen")
 }

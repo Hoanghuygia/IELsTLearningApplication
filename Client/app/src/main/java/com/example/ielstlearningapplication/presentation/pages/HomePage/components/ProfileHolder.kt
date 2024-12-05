@@ -22,20 +22,22 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.rememberNavController
+import com.example.ielstlearningapplication.presentation.navGraph.Route
 import com.example.ielstlearningapplication.presentation.pages.HomePage.data.FakeUser
 import com.example.ielstlearningapplication.presentation.pages.HomePage.data.user
 import com.example.ielstlearningapplication.ui.theme.IELsTLearningApplicationTheme
 
 @Composable
-fun ProfileHolder(currentUser: FakeUser, modifier: Modifier) {
+fun ProfileHolder(currentUser: FakeUser, modifier: Modifier, onEvent: () -> Unit) {
     Card(
-//        modifier = Modifier.padding(top = 32.dp, start = 32.dp, end = 32.dp),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.tertiary
-        )
+        ),
+        onClick = onEvent
     ) {
         Row(
-            modifier = Modifier
+            modifier = modifier
                 .padding(12.dp)
                 .fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
@@ -75,6 +77,7 @@ fun ProfileHolder(currentUser: FakeUser, modifier: Modifier) {
 @Composable
 fun PreviewProfileHolder() {
     IELsTLearningApplicationTheme {
-        ProfileHolder(currentUser = user, modifier = Modifier)
+        val navController = rememberNavController()
+        ProfileHolder(currentUser = user, modifier = Modifier, onEvent = {navController.navigate(Route.ProfileScreen.route)})
     }
 }
