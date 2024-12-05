@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.ielstlearningapplication.presentation.navGraph.Route
 import com.example.ielstlearningapplication.presentation.pages.HomePage.components.BottomBar
 import com.example.ielstlearningapplication.presentation.pages.HomePage.components.ContentHolder
@@ -60,7 +61,7 @@ fun HomePageScreen(navController: NavController) {
                         for (i in 0 until homePageItemLength - 1 step 2) {
                             val first = HomeScreenData.homePageItem[i]
                             val second = HomeScreenData.homePageItem[i + 1]
-                            ContentHolder(first, second, modifier = Modifier)
+                            ContentHolder(first, second, modifier = Modifier, navController = navController)
                         }
                     }
                 }
@@ -77,9 +78,11 @@ fun HomePageScreen(navController: NavController) {
 @Composable
 fun PreviewHomePageScreen() {
     IELsTLearningApplicationTheme {
-//        HomePageScreen()
+        val navController = rememberNavController()
+        HomePageScreen(navController = navController)
     }
 }
+
 
 
 

@@ -4,16 +4,21 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.compose.composable
+import com.example.ielstlearningapplication.presentation.pages.AIChat.AIChatScreen
 import com.example.ielstlearningapplication.presentation.pages.HomePage.HomePageScreen
+import com.example.ielstlearningapplication.presentation.pages.Library.LibraryScreen
+import com.example.ielstlearningapplication.presentation.pages.Listening.ListeningScreen
+import com.example.ielstlearningapplication.presentation.pages.Reading.ReadingScreen
 import com.example.ielstlearningapplication.presentation.pages.Login.LoginScreen
 import com.example.ielstlearningapplication.presentation.pages.Profile.ProfileScreen
+import com.example.ielstlearningapplication.presentation.pages.Speaking.SpeakingScreen
+import com.example.ielstlearningapplication.presentation.pages.Writing.WritingScreen
 
 @Composable
 fun NavGraph(startDestination: String) {
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = startDestination) {
-        // Login Screen
         composable(route = Route.LoginScreen.route) {
             LoginScreen(
                 onEvent = {
@@ -30,6 +35,30 @@ fun NavGraph(startDestination: String) {
 
         composable(route = Route.ProfileScreen.route){
             ProfileScreen()
+        }
+
+        composable(route = Route.ReadingScreen.route){
+            ReadingScreen()
+        }
+
+        composable(route = Route.ListeningScreen.route){
+            ListeningScreen()
+        }
+
+        composable(route = Route.WritingScreen.route){
+            WritingScreen()
+        }
+
+        composable(route = Route.SpeakingScreen.route){
+            SpeakingScreen()
+        }
+
+        composable(route = Route.LibraryScreen.route){
+            LibraryScreen()
+        }
+
+        composable(route = Route.AIScreen.route){
+            AIChatScreen()
         }
     }
 }

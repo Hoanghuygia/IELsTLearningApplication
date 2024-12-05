@@ -5,5 +5,6 @@ import androidx.compose.ui.graphics.vector.ImageVector
 data class HomeScrenItem(
     val title: String,
     val iconFocus: ImageVector,
-    val iconNormal: ImageVector
+    val iconNormal: ImageVector,
+    val route: String
 )
