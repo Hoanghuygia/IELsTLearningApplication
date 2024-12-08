@@ -42,7 +42,9 @@ fun NavGraph(startDestination: String) {
         }
 
         composable(route = Route.ListeningScreen.route){
-            ListeningScreen()
+            ListeningScreen(
+                navController = navController
+            )
         }
 
         composable(route = Route.WritingScreen.route){
