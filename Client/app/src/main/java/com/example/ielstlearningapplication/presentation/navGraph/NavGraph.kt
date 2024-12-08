@@ -56,7 +56,9 @@ fun NavGraph(startDestination: String) {
         }
 
         composable(route = Route.LibraryScreen.route){
-            LibraryScreen()
+            LibraryScreen(
+                navController = navController
+            )
         }
 
         composable(route = Route.AIScreen.route){
