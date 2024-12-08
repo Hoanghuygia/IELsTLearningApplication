@@ -10,7 +10,7 @@ buildscript {
     }
     dependencies {
         // Đổi phiên bản AGP về 8.6.0
-        classpath("com.android.tools.build:gradle:8.7.1")
+        classpath("com.android.tools.build:gradle:8.7.3")
 
 
     }

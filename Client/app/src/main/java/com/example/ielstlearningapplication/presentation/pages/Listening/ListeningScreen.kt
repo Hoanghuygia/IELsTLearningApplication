@@ -27,6 +27,7 @@ import com.example.ielstlearningapplication.presentation.pages.HomePage.componen
 import com.example.ielstlearningapplication.presentation.pages.HomePage.data.HomeScreenData
 import com.example.ielstlearningapplication.presentation.pages.HomePage.data.user
 import com.example.ielstlearningapplication.presentation.pages.Listening.components.SearchBar
+import com.example.ielstlearningapplication.presentation.pages.Listening.components.TabBar
 import com.example.ielstlearningapplication.ui.theme.IELsTLearningApplicationTheme
 
 @Composable
@@ -53,8 +54,8 @@ fun ListeningScreen(navController: NavController) {
                         .fillMaxSize()
                         .background(Color.White)
                         .padding(paddingValues)
-                        .padding(start = 0.dp, end = 0.dp, top = 0.dp),
-                    verticalArrangement = Arrangement.spacedBy(32.dp),
+                        .padding(start = 0.dp, end = 0.dp, top = 0.dp, bottom = 0.dp),
+                    verticalArrangement = Arrangement.spacedBy(0.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     SearchBar(
@@ -63,6 +64,7 @@ fun ListeningScreen(navController: NavController) {
                         searchQuery = "", // Bạn có thể điền giá trị mặc định hoặc lấy từ ViewModel
                         onSearchQueryChange = { /* TODO: Xử lý sự thay đổi của ô tìm kiếm */ }
                     )
+                    TabBar()
 
                 }
             }
