@@ -1,4 +1,4 @@
-package com.example.ielstlearningapplication.presentation.pages.Listening.components
+package com.example.ielstlearningapplication.presentation.pages.Reading.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -21,6 +21,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ielstlearningapplication.R
+import com.example.ielstlearningapplication.presentation.pages.Listening.components.LessonItem
 
 @Composable
 fun GeneralTrainingContent() {
@@ -39,5 +40,6 @@ fun GeneralTrainingContent() {
 
         items(items) { (icon, text) ->
             LessonItem(icon = icon, text = text)
-        }    }
+        }
+    }
 }

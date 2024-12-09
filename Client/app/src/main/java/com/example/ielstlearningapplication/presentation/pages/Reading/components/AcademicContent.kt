@@ -1,4 +1,4 @@
-package com.example.ielstlearningapplication.presentation.pages.Listening.components
+package com.example.ielstlearningapplication.presentation.pages.Reading.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -18,12 +18,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ielstlearningapplication.R
+import com.example.ielstlearningapplication.presentation.pages.Listening.components.LessonItem
 
 @Composable
-fun GeneralTrainingContent() {
+fun AcademicContent() {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -31,13 +33,22 @@ fun GeneralTrainingContent() {
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         val items = listOf(
-            R.drawable.notdone to "Cambridge IELTS 16 General Training Listening - Test 1",
-            R.drawable.notdone to "Cambridge IELTS 16 General Training Listening - Test 2",
-            R.drawable.notdone to "Cambridge IELTS 16 General Training Listening - Test 3",
-            R.drawable.notdone to "Cambridge IELTS 16 General Training Listening - Test 4"
+            R.drawable.done to "Cambridge IELTS 16 Academic Reading - Test 1",
+            R.drawable.notdone to "Cambridge IELTS 16 Academic Reading - Test 2",
+            R.drawable.clock to "Cambridge IELTS 16 Academic Reading - Test 3",
+            R.drawable.notdone to "Cambridge IELTS 16 Academic Reading - Test 4",
+            R.drawable.done to "Cambridge IELTS 16 Academic Reading - Test 1",
+            R.drawable.notdone to "Cambridge IELTS 16 Academic Reading - Test 2",
+            R.drawable.clock to "Cambridge IELTS 16 Academic Reading - Test 3",
+            R.drawable.notdone to "Cambridge IELTS 16 Academic Reading - Test 4",
+            R.drawable.done to "Cambridge IELTS 16 Academic Reading - Test 1",
+            R.drawable.notdone to "Cambridge IELTS 16 Academic Reading - Test 2",
+            R.drawable.clock to "Cambridge IELTS 16 Academic Reading - Test 3",
+            R.drawable.notdone to "Cambridge IELTS 16 Academic Reading - Test 4"
         )
 
         items(items) { (icon, text) ->
             LessonItem(icon = icon, text = text)
-        }    }
+        }
+    }
 }

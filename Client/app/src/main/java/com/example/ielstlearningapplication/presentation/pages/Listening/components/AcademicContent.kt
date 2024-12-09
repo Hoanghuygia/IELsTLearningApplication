@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -23,38 +25,29 @@ import com.example.ielstlearningapplication.R
 
 @Composable
 fun AcademicContent() {
-    Column(
+    LazyColumn(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         val items = listOf(
-            R.drawable.notdone to "Cambridge IELTS 16 Academic Listening - Test 1",
+            R.drawable.done to "Cambridge IELTS 16 Academic Listening - Test 1",
             R.drawable.notdone to "Cambridge IELTS 16 Academic Listening - Test 2",
-            R.drawable.notdone to "Cambridge IELTS 16 Academic Listening - Test 3",
+            R.drawable.clock to "Cambridge IELTS 16 Academic Listening - Test 3",
+            R.drawable.notdone to "Cambridge IELTS 16 Academic Listening - Test 4",
+            R.drawable.done to "Cambridge IELTS 16 Academic Listening - Test 1",
+            R.drawable.notdone to "Cambridge IELTS 16 Academic Listening - Test 2",
+            R.drawable.clock to "Cambridge IELTS 16 Academic Listening - Test 3",
+            R.drawable.notdone to "Cambridge IELTS 16 Academic Listening - Test 4",
+            R.drawable.done to "Cambridge IELTS 16 Academic Listening - Test 1",
+            R.drawable.notdone to "Cambridge IELTS 16 Academic Listening - Test 2",
+            R.drawable.clock to "Cambridge IELTS 16 Academic Listening - Test 3",
             R.drawable.notdone to "Cambridge IELTS 16 Academic Listening - Test 4"
         )
 
-        items.forEach { (icon, text) ->
-            Row(
-                modifier = Modifier
-                    .clickable { /* Xử lý sự kiện click */ }
-                    .padding(8.dp)
-            ) {
-                Image(
-                    painter = painterResource(id = icon),
-                    contentDescription = null,
-                    modifier = Modifier.size(48.dp)
-                )
-                Spacer(modifier = Modifier.width(16.dp))
-                Text(
-                    text = text,
-                    fontSize = 18.sp,
-                    color = Color.Black,
-                    modifier = Modifier.align(Alignment.CenterVertically)
-                )
-            }
+        items(items) { (icon, text) ->
+            LessonItem(icon = icon, text = text)
         }
     }
 }
