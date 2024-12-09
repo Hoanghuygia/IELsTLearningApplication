@@ -28,32 +28,16 @@ import com.example.ielstlearningapplication.presentation.pages.HomePage.data.Hom
 import com.example.ielstlearningapplication.presentation.pages.HomePage.data.user
 import com.example.ielstlearningapplication.presentation.pages.Listening.components.SearchBar
 import com.example.ielstlearningapplication.presentation.pages.Listening.components.TabBar
+import com.example.ielstlearningapplication.presentation.pages.Notify.NotifyScreen
 import com.example.ielstlearningapplication.ui.theme.IELsTLearningApplicationTheme
 
 @Composable
-fun ListeningScreen(navController: NavController) {
-    var bottomNavState by rememberSaveable { mutableStateOf(0) }
+fun ListeningScreen() {
 
-    fun navigateProfile() {
-        navController.navigate(Route.ProfileScreen.route)
-    }
-
-    Scaffold(
-
-        bottomBar = {
-            BottomBar(
-                bottomNavState = bottomNavState,
-                onNavItemClicked = { index -> bottomNavState = index }
-            )
-        }
-    ) { paddingValues ->
-        when (bottomNavState) {
-            0 -> {
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
                         .background(Color.White)
-                        .padding(paddingValues)
                         .padding(start = 0.dp, end = 0.dp, top = 0.dp, bottom = 0.dp),
                     verticalArrangement = Arrangement.spacedBy(0.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
@@ -67,21 +51,17 @@ fun ListeningScreen(navController: NavController) {
                     TabBar()
 
                 }
-            }
-            else -> {
-                Text(modifier = Modifier.fillMaxSize(), text = ".... Screen")
-            }
+
         }
 
-    }
-}
+
+
 
 @Preview(showBackground = true)
 @Composable
 fun PreviewListeningScreen() {
     IELsTLearningApplicationTheme {
-        val navController = rememberNavController()
-        ListeningScreen(navController = navController)
+        ListeningScreen()
     }
 }
 

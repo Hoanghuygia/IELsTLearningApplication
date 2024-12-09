@@ -7,7 +7,10 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
 import com.example.ielstlearningapplication.presentation.pages.HomePage.data.HomeScreenData.screens
+import com.example.ielstlearningapplication.ui.theme.IELsTLearningApplicationTheme
 
 @Composable
 fun BottomBar(
@@ -44,3 +47,4 @@ fun BottomBar(
         }
     }
 }
+

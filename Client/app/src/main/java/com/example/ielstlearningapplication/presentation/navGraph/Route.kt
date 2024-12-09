@@ -13,4 +13,5 @@ sealed class Route(
     object SpeakingScreen: Route(route = "onSpeakingScreen")
     object LibraryScreen: Route(route = "onLibraryScreen")
     object AIScreen: Route(route = "onAIScreen")
+    object NotifyScreen: Route(route = "onNotifyScreen")
 }

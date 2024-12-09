@@ -27,29 +27,14 @@ import com.example.ielstlearningapplication.presentation.pages.Library.component
 import com.example.ielstlearningapplication.ui.theme.IELsTLearningApplicationTheme
 
 @Composable
-fun LibraryScreen(navController: NavController) {
-    var bottomNavState by rememberSaveable { mutableStateOf(0) }
+fun LibraryScreen() {
 
-    fun navigateProfile() {
-        navController.navigate(Route.ProfileScreen.route)
-    }
 
-    Scaffold(
-
-        bottomBar = {
-            BottomBar(
-                bottomNavState = bottomNavState,
-                onNavItemClicked = { index -> bottomNavState = index }
-            )
-        }
-    ) { paddingValues ->
-        when (bottomNavState) {
-            0 -> {
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
                         .background(Color.White)
-                        .padding(paddingValues)
+
                         .padding(start = 0.dp, end = 0.dp, top = 0.dp, bottom = 0.dp),
                     verticalArrangement = Arrangement.spacedBy(0.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
@@ -63,22 +48,17 @@ fun LibraryScreen(navController: NavController) {
                     Filter()
                     CardWordList()
 
-                }
-            }
-            else -> {
-                Text(modifier = Modifier.fillMaxSize(), text = ".... Screen")
-            }
+
         }
 
     }
-}
+
 
 @Preview(showBackground = true)
 @Composable
 fun PreviewLibraryScreen() {
     IELsTLearningApplicationTheme {
-        val navController = rememberNavController()
-        LibraryScreen(navController = navController)
+        LibraryScreen()
     }
 }
 

@@ -26,6 +26,8 @@ import com.example.ielstlearningapplication.presentation.pages.HomePage.componen
 import com.example.ielstlearningapplication.presentation.pages.HomePage.components.ProfileHolder
 import com.example.ielstlearningapplication.presentation.pages.HomePage.data.HomeScreenData
 import com.example.ielstlearningapplication.presentation.pages.HomePage.data.user
+import com.example.ielstlearningapplication.presentation.pages.Library.LibraryScreen
+import com.example.ielstlearningapplication.presentation.pages.Notify.NotifyScreen
 import com.example.ielstlearningapplication.ui.theme.IELsTLearningApplicationTheme
 
 @Composable
@@ -65,6 +67,12 @@ fun HomePageScreen(navController: NavController) {
                         }
                     }
                 }
+            }
+            1 -> {
+                LibraryScreen()
+            }
+            2->{
+                NotifyScreen()
             }
             else -> {
                 Text(text = HomeScreenData.screens[bottomNavState].title)

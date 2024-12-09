@@ -10,6 +10,7 @@ import com.example.ielstlearningapplication.presentation.pages.Library.LibrarySc
 import com.example.ielstlearningapplication.presentation.pages.Listening.ListeningScreen
 import com.example.ielstlearningapplication.presentation.pages.Reading.ReadingScreen
 import com.example.ielstlearningapplication.presentation.pages.Login.LoginScreen
+import com.example.ielstlearningapplication.presentation.pages.Notify.NotifyScreen
 import com.example.ielstlearningapplication.presentation.pages.Profile.ProfileScreen
 import com.example.ielstlearningapplication.presentation.pages.Speaking.SpeakingScreen
 import com.example.ielstlearningapplication.presentation.pages.Writing.WritingScreen
@@ -42,9 +43,7 @@ fun NavGraph(startDestination: String) {
         }
 
         composable(route = Route.ListeningScreen.route){
-            ListeningScreen(
-                navController = navController
-            )
+            ListeningScreen()
         }
 
         composable(route = Route.WritingScreen.route){
@@ -56,13 +55,14 @@ fun NavGraph(startDestination: String) {
         }
 
         composable(route = Route.LibraryScreen.route){
-            LibraryScreen(
-                navController = navController
-            )
+            LibraryScreen()
         }
 
         composable(route = Route.AIScreen.route){
             AIChatScreen()
+        }
+        composable(route = Route.NotifyScreen.route) {
+            NotifyScreen()
         }
     }
 }
