@@ -2,24 +2,20 @@ package com.example.ielstlearningapplication.presentation.pages.AIChat
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.ielstlearningapplication.presentation.pages.AIChat.components.AiChatTopBar
 import com.example.ielstlearningapplication.presentation.pages.AIChat.components.Messages
 import com.example.ielstlearningapplication.presentation.pages.AIChat.components.SendingBar
-import com.example.ielstlearningapplication.presentation.pages.AIChat.data.DataChat
 import com.example.ielstlearningapplication.ui.theme.IELsTLearningApplicationTheme
-import androidx.compose.runtime.collectAsState
-import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
 fun AIChatScreen(viewModel: AIChatViewModel = viewModel(),
@@ -34,7 +30,7 @@ fun AIChatScreen(viewModel: AIChatViewModel = viewModel(),
         Column(modifier = Modifier
             .fillMaxSize()
             .padding(innerPadding)) {
-            Messages(messages = DataChat.aMessage, modifier = Modifier.weight(1f))
+            Messages(messages = uiState.currentChat, modifier = Modifier.weight(1f))
         }
     }
 }

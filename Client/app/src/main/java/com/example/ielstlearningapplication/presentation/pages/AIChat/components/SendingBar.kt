@@ -74,7 +74,8 @@ fun SendingBar(uiState: AIChatUIState, viewModel: AIChatViewModel ,modifier: Mod
                 ),
                 trailingIcon = {
                     IconButton(onClick = {
-
+                        viewModel.updateCurrentChat(uiState.valueTextField)
+                        viewModel.clearEnterTextField()
                     }) {
                         Icon(Icons.Filled.ArrowOutward, contentDescription = "Next")
                     }
