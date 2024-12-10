@@ -43,34 +43,41 @@ fun HomePageScreen(navController: NavController) {
                 onNavItemClicked = { index -> bottomNavState = index }
             )
         }
-    ) { _ ->
-        when (bottomNavState) {
-            0 -> {
-                Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(Color.White)
-                        .padding(start = 32.dp, end = 32.dp, top = 50.dp),
-                    verticalArrangement = Arrangement.spacedBy(32.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    ProfileHolder(user, modifier = Modifier, onEvent = ::navigateProfile)
+    ) { innerPadding ->
+        Box(modifier = Modifier.padding(innerPadding)) {
+            when (bottomNavState) {
+                0 -> {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(Color.White)
+                            .padding(start = 32.dp, end = 32.dp, top = 50.dp),
+                        verticalArrangement = Arrangement.spacedBy(32.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        ProfileHolder(user, modifier = Modifier, onEvent = ::navigateProfile)
 
-                    val homePageItemLength = HomeScreenData.homePageItem.size
-                    if (homePageItemLength % 2 == 0) {
-                        for (i in 0 until homePageItemLength - 1 step 2) {
-                            val first = HomeScreenData.homePageItem[i]
-                            val second = HomeScreenData.homePageItem[i + 1]
-                            ContentHolder(first, second, modifier = Modifier, navController = navController)
+                        val homePageItemLength = HomeScreenData.homePageItem.size
+                        if (homePageItemLength % 2 == 0) {
+                            for (i in 0 until homePageItemLength - 1 step 2) {
+                                val first = HomeScreenData.homePageItem[i]
+                                val second = HomeScreenData.homePageItem[i + 1]
+                                ContentHolder(
+                                    first,
+                                    second,
+                                    modifier = Modifier,
+                                    navController = navController
+                                )
+                            }
                         }
                     }
                 }
-            }
-            else -> {
-                Text(text = HomeScreenData.screens[bottomNavState].title)
+
+                else -> {
+                    Text(text = HomeScreenData.screens[bottomNavState].title)
+                }
             }
         }
-
     }
 }
 

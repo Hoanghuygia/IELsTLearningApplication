@@ -58,7 +58,7 @@ fun NavGraph(startDestination: String) {
         }
 
         composable(route = Route.AIScreen.route){
-            AIChatScreen()
+            AIChatScreen(navController = navController)
         }
     }
 }
