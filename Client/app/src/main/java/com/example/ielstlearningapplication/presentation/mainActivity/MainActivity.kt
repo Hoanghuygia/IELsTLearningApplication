@@ -6,14 +6,18 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.ielstlearningapplication.presentation.navGraph.NavGraph
 import com.example.ielstlearningapplication.ui.theme.IELsTLearningApplicationTheme
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 class MainActivity : ComponentActivity() {
     private val viewModel by viewModels<MainViewModel>()
@@ -25,6 +29,15 @@ class MainActivity : ComponentActivity() {
         }
         setContent {
             IELsTLearningApplicationTheme {
+                val isSystemInDarkMode = isSystemInDarkTheme()
+                val systemController = rememberSystemUiController()
+
+                SideEffect {
+                    systemController.setSystemBarsColor(
+                        color = Color.Transparent,
+                        darkIcons = !isSystemInDarkMode
+                    )
+                }
                 Box(modifier = Modifier.background(MaterialTheme.colorScheme.background)) {
                     NavGraph(startDestination = viewModel.startDestination.value)
                 }
@@ -38,3 +51,5 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Preview() {
 }
+
+

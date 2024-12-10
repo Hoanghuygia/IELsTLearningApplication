@@ -73,6 +73,13 @@ dependencies {
     // Icon
     implementation("androidx.compose.material:material-icons-extended")
 
+    // System UI Controller
+    implementation("com.google.accompanist:accompanist-systemuicontroller:0.30.1")
+
+    // Edge to Edge controll
+    implementation ("androidx.activity:activity-ktx:1.8.0-alpha03")
+    implementation ("androidx.appcompat:appcompat:1.6.1")
+    implementation ("androidx.core:core-ktx:1.9.0")
 }
 
 kapt {
