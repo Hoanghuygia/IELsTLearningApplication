@@ -47,7 +47,8 @@ object HomeScreenData {
             Icons.Outlined.Notifications,
             Route.HomeScreen.route,
             hasBadge = true,
-            badgeNum = 10
+            badgeNum = 0,
+
         ),
         HomePageNavItem(
             title = "Account",
