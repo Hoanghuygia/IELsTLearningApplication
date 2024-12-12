@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.ielstlearningapplication.presentation.navGraph.Route
 import com.example.ielstlearningapplication.presentation.pages.HomePage.components.BottomBar
@@ -32,7 +33,7 @@ import com.example.ielstlearningapplication.presentation.pages.Notify.NotifyScre
 import com.example.ielstlearningapplication.ui.theme.IELsTLearningApplicationTheme
 
 @Composable
-fun ListeningScreen() {
+fun ListeningScreen(navController: NavHostController) {
 
                 Column(
                     modifier = Modifier
@@ -48,7 +49,7 @@ fun ListeningScreen() {
                         searchQuery = "", // Bạn có thể điền giá trị mặc định hoặc lấy từ ViewModel
                         onSearchQueryChange = { /* TODO: Xử lý sự thay đổi của ô tìm kiếm */ }
                     )
-                    TabBar()
+                    TabBar(navController)
 
                 }
 
@@ -61,7 +62,8 @@ fun ListeningScreen() {
 @Composable
 fun PreviewListeningScreen() {
     IELsTLearningApplicationTheme {
-        ListeningScreen()
+        val navController = rememberNavController()
+        ListeningScreen(navController)
     }
 }
 

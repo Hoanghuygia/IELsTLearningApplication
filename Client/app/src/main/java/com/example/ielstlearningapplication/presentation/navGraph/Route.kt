@@ -14,4 +14,7 @@ sealed class Route(
     object LibraryScreen: Route(route = "onLibraryScreen")
     object AIScreen: Route(route = "onAIScreen")
     object NotifyScreen: Route(route = "onNotifyScreen")
+    object ReadingTestScreen: Route(route = "onReadingTestScreen")
+    object ReadingAnswerScreen: Route(route = "onReadingAnswerScreen")
+
 }

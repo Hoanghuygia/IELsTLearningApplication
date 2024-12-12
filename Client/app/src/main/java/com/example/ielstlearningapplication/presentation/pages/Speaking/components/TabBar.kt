@@ -20,13 +20,14 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.zIndex
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.ielstlearningapplication.R
 import com.example.ielstlearningapplication.presentation.pages.Listening.components.SearchBar
 import com.example.ielstlearningapplication.ui.theme.IELsTLearningApplicationTheme
 
 @Composable
-fun TabBar() {
+fun TabBar(navController: NavHostController) {
     var selectedTabIndex by remember { mutableStateOf(0) }
     val tabs = listOf("Part 1", "Part 2", "Part 3")
 
@@ -73,9 +74,9 @@ fun TabBar() {
 
         }
         when (selectedTabIndex) {
-            0 -> Part1Content()
-            1 -> Part2Content()
-            2 -> Part3Content()
+            0 -> Part1Content(navController)
+            1 -> Part2Content(navController)
+            2 -> Part3Content(navController)
         }
 
     }

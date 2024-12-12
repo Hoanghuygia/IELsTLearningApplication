@@ -11,12 +11,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.ielstlearningapplication.presentation.pages.Reading.components.SearchBar
 import com.example.ielstlearningapplication.presentation.pages.Reading.components.TabBar
 import com.example.ielstlearningapplication.ui.theme.IELsTLearningApplicationTheme
 
 @Composable
-fun ReadingScreen() {
+fun ReadingScreen(navController: NavHostController) {
 
     Column(
         modifier = Modifier
@@ -32,7 +34,7 @@ fun ReadingScreen() {
             searchQuery = "", // Bạn có thể điền giá trị mặc định hoặc lấy từ ViewModel
             onSearchQueryChange = { /* TODO: Xử lý sự thay đổi của ô tìm kiếm */ }
         )
-        TabBar()
+        TabBar(navController)
 
     }
 
@@ -45,7 +47,8 @@ fun ReadingScreen() {
 @Composable
 fun PreviewReadingScreen() {
     IELsTLearningApplicationTheme {
-        ReadingScreen()
+        val navController = rememberNavController()
+        ReadingScreen(navController)
     }
 }
 

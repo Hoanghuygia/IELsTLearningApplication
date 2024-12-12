@@ -20,11 +20,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.ielstlearningapplication.R
 import com.example.ielstlearningapplication.presentation.pages.Listening.components.LessonItem
 
 @Composable
-fun GeneralTrainingContent() {
+fun GeneralTrainingContent(navController: NavHostController) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -39,7 +40,7 @@ fun GeneralTrainingContent() {
         )
 
         items(items) { (icon, text) ->
-            LessonItem(icon = icon, text = text)
+            LessonItem(icon = icon, text = text, navController)
         }
     }
 }

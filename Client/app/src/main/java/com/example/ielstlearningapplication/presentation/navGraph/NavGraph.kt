@@ -4,6 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.compose.composable
+import com.example.buildprojectwithcompose.ReadingAnswerScreen
+import com.example.buildprojectwithcompose.ReadingTestScreen
 import com.example.ielstlearningapplication.presentation.pages.AIChat.AIChatScreen
 import com.example.ielstlearningapplication.presentation.pages.HomePage.HomePageScreen
 import com.example.ielstlearningapplication.presentation.pages.Library.LibraryScreen
@@ -39,11 +41,11 @@ fun NavGraph(startDestination: String) {
         }
 
         composable(route = Route.ReadingScreen.route){
-            ReadingScreen()
+            ReadingScreen(navController = navController)
         }
 
         composable(route = Route.ListeningScreen.route){
-            ListeningScreen()
+            ListeningScreen(navController = navController)
         }
 
         composable(route = Route.WritingScreen.route){
@@ -51,7 +53,7 @@ fun NavGraph(startDestination: String) {
         }
 
         composable(route = Route.SpeakingScreen.route){
-            SpeakingScreen()
+            SpeakingScreen(navController = navController)
         }
 
         composable(route = Route.LibraryScreen.route){
@@ -63,6 +65,15 @@ fun NavGraph(startDestination: String) {
         }
         composable(route = Route.NotifyScreen.route) {
             NotifyScreen()
+        }
+        composable(route = Route.NotifyScreen.route) {
+            NotifyScreen()
+        }
+        composable(route = Route.ReadingTestScreen.route) {
+            ReadingTestScreen(navController = navController)
+        }
+        composable(route = Route.ReadingAnswerScreen.route) {
+            ReadingAnswerScreen(navController = navController)
         }
     }
 }
