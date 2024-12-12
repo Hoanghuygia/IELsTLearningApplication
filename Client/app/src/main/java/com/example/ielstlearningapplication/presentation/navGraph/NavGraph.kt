@@ -13,6 +13,7 @@ import com.example.ielstlearningapplication.presentation.pages.Notify.NotifyScre
 import com.example.ielstlearningapplication.presentation.pages.Profile.ProfileScreen
 import com.example.ielstlearningapplication.presentation.pages.Writing.WritingScreen
 import com.example.ielstlearningapplication.presentation.pages.Reading.ReadingScreen
+import com.example.ielstlearningapplication.presentation.pages.Speaking.SpeakingResultScreen
 import com.example.ielstlearningapplication.presentation.pages.Speaking.SpeakingScreen
 
 @Composable
@@ -51,7 +52,7 @@ fun NavGraph(startDestination: String) {
         }
 
         composable(route = Route.SpeakingScreen.route){
-            SpeakingScreen()
+            SpeakingScreen(navController)
         }
 
         composable(route = Route.LibraryScreen.route){
@@ -63,6 +64,9 @@ fun NavGraph(startDestination: String) {
         }
         composable(route = Route.NotifyScreen.route) {
             NotifyScreen()
+        }
+        composable(route = "speaking_result_screen") {
+            SpeakingResultScreen()
         }
     }
 }
