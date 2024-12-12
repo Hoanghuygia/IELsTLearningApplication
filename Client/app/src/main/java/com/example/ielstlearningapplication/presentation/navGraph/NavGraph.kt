@@ -46,7 +46,9 @@ fun NavGraph(startDestination: String) {
         }
 
         composable(route = Route.ProfileScreen.route){
-            ProfileScreen()
+            ProfileScreen(
+                navController = navController
+            )
         }
 
         composable(route = Route.ReadingScreen.route){
@@ -75,5 +77,6 @@ fun NavGraph(startDestination: String) {
         composable(route = Route.NotifyScreen.route) {
             NotifyScreen()
         }
+
     }
 }
