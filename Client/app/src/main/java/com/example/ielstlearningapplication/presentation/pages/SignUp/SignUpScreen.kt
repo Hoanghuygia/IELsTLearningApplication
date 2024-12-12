@@ -1,4 +1,4 @@
-package com.example.ielstlearningapplication.presentation.pages.Login
+package com.example.ielstlearningapplication.presentation.pages.SignUp
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -29,6 +29,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.modifier.modifierLocalOf
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
@@ -42,56 +43,58 @@ import androidx.navigation.compose.rememberNavController
 import com.example.ielstlearningapplication.ui.theme.IELsTLearningApplicationTheme
 import com.example.ielstlearningapplication.R
 import com.example.ielstlearningapplication.presentation.navGraph.Route
+import com.example.ielstlearningapplication.presentation.pages.Login.LoginScreen
 
 @Composable
-fun LoginScreen(navController: NavController,onEvent: () -> Unit) {
-    var checked by remember { mutableStateOf(false) }
-    var userGmail by remember { mutableStateOf("")}
+fun SignUpScreen(navController: NavController, onEvent : () -> Unit) {
+    var userName by remember { mutableStateOf("") }
+    var userGmail by remember { mutableStateOf("") }
+    var userPhone by remember { mutableStateOf("") }
     var userPassword by remember { mutableStateOf("") }
 
-    fun navigateSignUp() {
-        navController.navigate(Route.SignupScreen.route)
+    fun navigateLogin() {
+        navController.navigate(Route.LoginScreen.route)
     }
 
-    Column(
+
+    Column (
         modifier = Modifier
             .fillMaxSize()
             .background(color = Color(0, 33, 71)),
-    ) {
+    ){
+        Column (
+            modifier = Modifier.height(40.dp)
+        ){}
         Column(
             modifier = Modifier
-                .height(170.dp)
-                .padding(horizontal = 40.dp, vertical = 30.dp),
-
-        ){
-            Text(
-                text = "Welcome to",
-                color = Color.White,
-                fontSize = 32.sp,
-            )
-            Spacer(modifier = Modifier.height(4.dp))
-            Text(
-                text = "PeakIELTS!",
-                color = Color.White,
-                fontSize = 64.sp,
-            )
-        }
-
-        Column (
-            modifier = Modifier
-                .height(265.dp)
+                .height(385.dp)
                 .background(Color.White,
                     shape = RoundedCornerShape(topStart = 50.dp, topEnd = 50.dp)
                 )
-                .padding(horizontal = 40.dp, vertical = 10.dp),
+                .padding(horizontal = 40.dp, vertical = 15.dp),
         ){
             Text(
-                text = "Login",
+                text = "Sign up",
                 fontSize = 40.sp,
                 color = Color(0, 33, 71)
             )
 
-            Spacer(modifier = Modifier.height(15.dp))
+            Spacer(modifier = Modifier.height(25.dp))
+
+            OutlinedTextField(
+                modifier = Modifier
+                    .width(312.dp)
+                    .height(55.dp)
+                ,
+                textStyle = TextStyle.Default.copy(fontSize = 16.sp),
+                value = userName,
+                onValueChange = {userName = it},
+                label = {
+                    Text(text="Enter Your Email")
+                }
+            )
+
+            Spacer(modifier = Modifier.height(24.dp))
 
             OutlinedTextField(
                 modifier = Modifier
@@ -104,9 +107,24 @@ fun LoginScreen(navController: NavController,onEvent: () -> Unit) {
                 label = {
                     Text(text="Enter Your Email")
                 }
-                )
+            )
 
-            Spacer(modifier = Modifier.height(14.dp))
+            Spacer(modifier = Modifier.height(24.dp))
+
+            OutlinedTextField(
+                modifier = Modifier
+                    .width(312.dp)
+                    .height(55.dp)
+                ,
+                textStyle = TextStyle.Default.copy(fontSize = 16.sp),
+                value = userPhone,
+                onValueChange = {userPhone = it},
+                label = {
+                    Text(text="Enter Your Email")
+                }
+            )
+
+            Spacer(modifier = Modifier.height(24.dp))
 
             OutlinedTextField(
                 modifier = Modifier
@@ -117,42 +135,16 @@ fun LoginScreen(navController: NavController,onEvent: () -> Unit) {
                 value = userPassword,
                 onValueChange = {userPassword = it},
                 label = {
-                    Text(text="Enter Your Password")
+                    Text(text="Enter Your Email")
                 }
             )
-
-            Spacer(modifier = Modifier.height(15.dp))
-            Row (
-                modifier = Modifier
-                    .height(43.dp)
-                    .fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                Checkbox(
-
-                    checked = checked,
-                    onCheckedChange = {checked = it}
-                )
-                Text(
-                    modifier = Modifier.weight(1f),
-                    text = "Remember me",
-                    fontSize = 15.sp,
-                    color = Color(0, 12, 20),
-                )
-
-                Text(
-                    text = "Forgot Password?",
-                    fontSize = 15.sp,
-                    color = Color(232,105,105),
-                )
-            }
         }
 
         Column (
             modifier = Modifier
                 .fillMaxSize()
                 .background(Color.White)
-                .padding(horizontal = 40.dp, vertical = 10.dp),
+                .padding(horizontal = 40.dp, vertical = 25.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ){
             Button(
@@ -168,7 +160,7 @@ fun LoginScreen(navController: NavController,onEvent: () -> Unit) {
                 )
             ) {
                 Text(
-                    text = "Login",
+                    text = "Sign up",
                 )
             }
 
@@ -239,14 +231,14 @@ fun LoginScreen(navController: NavController,onEvent: () -> Unit) {
 
             Row {
                 Text(
-                    text = "Don't have an account? ",
+                    text = "Already have an account? ",
                     fontSize = 16.sp,
                     color = Color(13, 14, 14)
                 )
 
                 Text(
-                    modifier = Modifier.clickable(onClick = ::navigateSignUp),
-                    text = "Sign up",
+                    modifier = Modifier.clickable (onClick = ::navigateLogin),
+                    text = "Sign in",
                     fontSize = 16.sp,
                     color = Color(24, 119, 242)
                 )
@@ -257,13 +249,9 @@ fun LoginScreen(navController: NavController,onEvent: () -> Unit) {
 
 @Preview(showBackground = true)
 @Composable
-fun LoginScreenReview() {
+fun SignUpScreenReview() {
     IELsTLearningApplicationTheme {
         val navController = rememberNavController()
-        LoginScreen(navController,{})
+        SignUpScreen(navController,{})
     }
 }
-
-
-
-

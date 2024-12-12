@@ -13,6 +13,7 @@ import com.example.ielstlearningapplication.presentation.pages.Notify.NotifyScre
 import com.example.ielstlearningapplication.presentation.pages.Profile.ProfileScreen
 import com.example.ielstlearningapplication.presentation.pages.Writing.WritingScreen
 import com.example.ielstlearningapplication.presentation.pages.Reading.ReadingScreen
+import com.example.ielstlearningapplication.presentation.pages.SignUp.SignUpScreen
 import com.example.ielstlearningapplication.presentation.pages.Speaking.SpeakingScreen
 
 @Composable
@@ -22,6 +23,16 @@ fun NavGraph(startDestination: String) {
     NavHost(navController = navController, startDestination = startDestination) {
         composable(route = Route.LoginScreen.route) {
             LoginScreen(
+                navController = navController,
+                onEvent = {
+                    navController.navigate(Route.HomeScreen.route)
+                }
+            )
+        }
+
+        composable(route = Route.SignupScreen.route) {
+            SignUpScreen(
+                navController = navController,
                 onEvent = {
                     navController.navigate(Route.HomeScreen.route)
                 }
