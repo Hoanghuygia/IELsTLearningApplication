@@ -28,6 +28,7 @@ import com.example.ielstlearningapplication.presentation.pages.HomePage.data.Hom
 import com.example.ielstlearningapplication.presentation.pages.HomePage.data.user
 import com.example.ielstlearningapplication.presentation.pages.Library.LibraryScreen
 import com.example.ielstlearningapplication.presentation.pages.Notify.NotifyScreen
+import com.example.ielstlearningapplication.presentation.pages.Profile.ProfileScreen
 import com.example.ielstlearningapplication.ui.theme.IELsTLearningApplicationTheme
 
 @Composable
@@ -80,6 +81,9 @@ fun HomePageScreen(navController: NavController) {
             }
             2->{
                 NotifyScreen()
+            }
+            3 -> {
+                ProfileScreen(navController)
             }
             else -> {
                     Text(text = HomeScreenData.screens[bottomNavState].title)

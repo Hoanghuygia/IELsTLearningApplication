@@ -15,10 +15,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -32,14 +30,13 @@ import androidx.navigation.compose.rememberNavController
 import com.example.ielstlearningapplication.ui.theme.IELsTLearningApplicationTheme
 import com.example.ielstlearningapplication.R
 import com.example.ielstlearningapplication.presentation.navGraph.Route
-import com.example.ielstlearningapplication.presentation.pages.HomePage.components.BottomBar
+
 
 @Composable
 fun ProfileScreen(navController: NavController){
-    var bottomNavState by rememberSaveable { mutableStateOf(0) }
 
     fun changeProfileInfo() {
-        navController.navigate(Route.HomeScreen.route)
+        navController.navigate(Route.ProfileChangeScreen.route)
     }
 
     Column(
@@ -173,8 +170,8 @@ fun ProfileScreen(navController: NavController){
                 Image(
                     modifier = Modifier
                         .size(43.dp),
-                    painter = painterResource(R.drawable.gender_icon),
-                    contentDescription = "Gender Icon")
+                    painter = painterResource(R.drawable.mail_icon),
+                    contentDescription = "Email Icon")
 
                 Column (
                     modifier = Modifier.padding(horizontal = 20.dp)
@@ -207,8 +204,8 @@ fun ProfileScreen(navController: NavController){
                 Image(
                     modifier = Modifier
                         .size(43.dp),
-                    painter = painterResource(R.drawable.gender_icon),
-                    contentDescription = "Gender Icon")
+                    painter = painterResource(R.drawable.target_icon),
+                    contentDescription = "User's Target Score Icon")
 
                 Column (
                     modifier = Modifier.padding(horizontal = 20.dp)
@@ -233,11 +230,6 @@ fun ProfileScreen(navController: NavController){
                 }
             }
         }
-
-        BottomBar(
-            bottomNavState = bottomNavState,
-            onNavItemClicked = {index -> bottomNavState = index}
-        )
     }
 }
 
