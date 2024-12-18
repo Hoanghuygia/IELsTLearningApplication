@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.ielstlearningapplication.R
-import com.example.ielstlearningapplication.presentation.pages.Listening.components.LessonItem
+import com.example.ielstlearningapplication.presentation.pages.Speaking.components.LessonItem
 
 @Composable
 fun Part1Content(navController: NavHostController){

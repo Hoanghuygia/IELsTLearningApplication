@@ -15,7 +15,10 @@ import com.example.ielstlearningapplication.presentation.pages.Notify.NotifyScre
 import com.example.ielstlearningapplication.presentation.pages.Profile.ProfileScreen
 import com.example.ielstlearningapplication.presentation.pages.Writing.WritingScreen
 import com.example.ielstlearningapplication.presentation.pages.Reading.ReadingScreen
+import com.example.ielstlearningapplication.presentation.pages.Speaking.LessonScreen
 import com.example.ielstlearningapplication.presentation.pages.Speaking.SpeakingScreen
+import com.example.ielstlearningapplication.presentation.pages.Speaking.SpeakingResultScreen
+
 
 @Composable
 fun NavGraph(startDestination: String) {
@@ -74,6 +77,12 @@ fun NavGraph(startDestination: String) {
         }
         composable(route = Route.ReadingAnswerScreen.route) {
             ReadingAnswerScreen(navController = navController)
+        }
+        composable(route = Route.SpeakingResultScreen.route) {
+            SpeakingResultScreen(navController = navController)
+        }
+        composable(route = Route.LessonScreen.route) {
+            LessonScreen(navController = navController)
         }
     }
 }
