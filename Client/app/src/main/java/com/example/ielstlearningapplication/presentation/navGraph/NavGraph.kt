@@ -6,6 +6,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.compose.composable
 import com.example.ielstlearningapplication.presentation.pages.AIChat.AIChatScreen
 import com.example.ielstlearningapplication.presentation.pages.ChangePassword.ChangePasswordScreen
+import com.example.ielstlearningapplication.presentation.pages.CreateNewWord.CreateNewWordScreen
 import com.example.ielstlearningapplication.presentation.pages.HomePage.HomePageScreen
 import com.example.ielstlearningapplication.presentation.pages.Library.LibraryScreen
 import com.example.ielstlearningapplication.presentation.pages.Listening.ListeningScreen
@@ -72,7 +73,9 @@ fun NavGraph(startDestination: String) {
         }
 
         composable(route = Route.LibraryScreen.route){
-            LibraryScreen()
+            LibraryScreen(
+                navController = navController
+            )
         }
 
         composable(route = Route.AIScreen.route){
@@ -93,6 +96,11 @@ fun NavGraph(startDestination: String) {
         }
         composable(route = Route.ChangePasswordScreen.route){
             ChangePasswordScreen(
+                navController = navController
+            )
+        }
+        composable(route = Route.CreateNewWordScreen.route) {
+            CreateNewWordScreen(
                 navController = navController
             )
         }

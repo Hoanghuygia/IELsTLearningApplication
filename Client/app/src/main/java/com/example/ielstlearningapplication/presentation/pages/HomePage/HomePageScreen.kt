@@ -78,7 +78,7 @@ fun HomePageScreen(navController: NavController) {
                 }
 
                 1 -> {
-                    LibraryScreen()
+                    LibraryScreen(navController)
                 }
                 2->{
                     NotifyScreen()

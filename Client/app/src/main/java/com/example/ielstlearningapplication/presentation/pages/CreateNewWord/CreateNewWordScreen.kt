@@ -1,4 +1,4 @@
-package com.example.ielstlearningapplication.presentation.pages.ChangePassword
+package com.example.ielstlearningapplication.presentation.pages.CreateNewWord
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -49,19 +49,19 @@ import com.example.ielstlearningapplication.presentation.navGraph.Route
 import com.example.ielstlearningapplication.presentation.pages.Setting.SettingScreen
 
 @Composable
-fun ChangePasswordScreen(navController: NavController) {
+fun CreateNewWordScreen(navController: NavController) {
     var isInputNotNull1 by remember { mutableStateOf(false) }
     var isInputNotNull2 by remember { mutableStateOf(false) }
     var isInputNotNull3 by remember { mutableStateOf(false) }
 
-    var currPw by remember { mutableStateOf("Enter your current password") }
-    var newPW by remember { mutableStateOf("Enter your new password") }
-    var confirmNew by remember { mutableStateOf("Confirm new password") }
+    var newWord by remember { mutableStateOf("Enter a new word") }
+    var wordType by remember { mutableStateOf("Enter type of word") }
+    var wordDescription by remember { mutableStateOf("Meaning") }
 
     val openDialog = remember { mutableStateOf(false) }
 
-    fun navigateBackToSetting() {
-        navController.navigate(Route.SettingScreen.route)
+    fun navigateBackToDictionary() {
+        navController.navigate(Route.LibraryScreen.route)
     }
 
     Column(
@@ -76,16 +76,16 @@ fun ChangePasswordScreen(navController: NavController) {
             Image(
                 modifier = Modifier
                     .size(width = 12.dp, height = 30.dp)
-                    .clickable(onClick = ::navigateBackToSetting),
+                    .clickable(onClick = ::navigateBackToDictionary),
                 painter = painterResource(R.drawable.go_back_arrow),
-                contentDescription = "Return to setting page"
+                contentDescription = "Return to library"
             )
 
             Spacer(modifier = Modifier.size(40.dp))
 
             Text (
                 modifier = Modifier,
-                text = "Change Password",
+                text = "Create new word",
                 color = Color(0, 33, 71),
                 fontSize = 20.sp
             )
@@ -99,13 +99,13 @@ fun ChangePasswordScreen(navController: NavController) {
                 .height(55.dp)
             ,
             textStyle = TextStyle.Default.copy(fontSize = 16.sp),
-            value = currPw,
+            value = newWord,
             onValueChange = {
                 isInputNotNull1 = true
-                currPw = it },
+                newWord = it },
             label = {
                 Text(
-                    text="Current Password",
+                    text="New Word",
                     fontSize = 14.sp,
                 )
             },
@@ -120,13 +120,13 @@ fun ChangePasswordScreen(navController: NavController) {
                 .height(55.dp)
             ,
             textStyle = TextStyle.Default.copy(fontSize = 16.sp),
-            value = newPW,
+            value = wordType,
             onValueChange = {
                 isInputNotNull2 = true
-                newPW = it },
+                wordType = it },
             label = {
                 Text(
-                    text="New Password",
+                    text="Word Type",
                     fontSize = 14.sp,
                 )
             },
@@ -138,16 +138,16 @@ fun ChangePasswordScreen(navController: NavController) {
         OutlinedTextField(
             modifier = Modifier
                 .width(356.dp)
-                .height(55.dp)
+                .height(129.dp)
             ,
             textStyle = TextStyle.Default.copy(fontSize = 16.sp),
-            value = confirmNew,
+            value = wordDescription,
             onValueChange = {
                 isInputNotNull3 = true
-                confirmNew = it },
+                wordDescription = it },
             label = {
                 Text(
-                    text="Current Password",
+                    text="Word Description",
                     fontSize = 14.sp,
                 )
             },
@@ -169,7 +169,7 @@ fun ChangePasswordScreen(navController: NavController) {
             ),
         ) {
             Text(
-                text = "Change Password",
+                text = "Create new word",
                 fontSize = 23.sp,
                 fontWeight = FontWeight.Bold
             )
@@ -180,7 +180,7 @@ fun ChangePasswordScreen(navController: NavController) {
         Dialog (
             onDismissRequest = {
                 openDialog.value = false
-                navigateBackToSetting()
+                navigateBackToDictionary()
             }) {
             Card (
                 modifier = Modifier
@@ -190,7 +190,7 @@ fun ChangePasswordScreen(navController: NavController) {
                 shape = RoundedCornerShape(16.dp),
             ) {
                 Text(
-                    text = "Password change successfully",
+                    text = "Create new word successfully",
                     modifier = Modifier
                         .fillMaxSize()
                         .wrapContentSize(Alignment.Center),
@@ -203,9 +203,9 @@ fun ChangePasswordScreen(navController: NavController) {
 
 @Preview(showBackground = true)
 @Composable
-fun ChangePasswordScreenPreview() {
+fun CreateNEwWordScreenPreview() {
     IELsTLearningApplicationTheme {
         val navController = rememberNavController()
-        ChangePasswordScreen(navController)
+        CreateNewWordScreen(navController)
     }
 }

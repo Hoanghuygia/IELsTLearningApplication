@@ -17,4 +17,5 @@ sealed class Route(
     object ProfileChangeScreen: Route(route = "onProfileChangeScreen")
     object SettingScreen: Route(route = "onSettingScreen")
     object ChangePasswordScreen: Route(route = "onChangePasswordScreen")
+    object CreateNewWordScreen : Route(route = "onCreateNewWordScreen")
 }

@@ -27,8 +27,7 @@ import com.example.ielstlearningapplication.presentation.pages.Library.component
 import com.example.ielstlearningapplication.ui.theme.IELsTLearningApplicationTheme
 
 @Composable
-fun LibraryScreen() {
-
+fun LibraryScreen(navController: NavController) {
 
                 Column(
                     modifier = Modifier
@@ -41,7 +40,7 @@ fun LibraryScreen() {
                 ) {
                     SearchBarWords(
                         onBackClick = { /* TODO: Xử lý sự kiện quay lại */ },
-                        onMoreClick = { /* TODO: Xử lý sự kiện cho nút More */ },
+                        onMoreClick = { navController.navigate(Route.CreateNewWordScreen.route) },
                         searchQuery = "", // Bạn có thể điền giá trị mặc định hoặc lấy từ ViewModel
                         onSearchQueryChange = { /* TODO: Xử lý sự thay đổi của ô tìm kiếm */ }
                     )
@@ -58,7 +57,8 @@ fun LibraryScreen() {
 @Composable
 fun PreviewLibraryScreen() {
     IELsTLearningApplicationTheme {
-        LibraryScreen()
+        val navController = rememberNavController()
+        LibraryScreen(navController = navController)
     }
 }
 
