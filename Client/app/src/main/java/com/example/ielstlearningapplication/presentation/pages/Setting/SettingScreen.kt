@@ -137,7 +137,7 @@ fun SettingScreen(navController: NavController) {
                 color = Color.Black
             )
 
-            Spacer(modifier = Modifier.size(width = 20.dp, height = 0.dp))
+            Spacer(modifier = Modifier.size(width = 90.dp, height = 0.dp))
 
             Switch(
                 modifier = Modifier.scale(1.5f),

@@ -1,6 +1,5 @@
 package com.example.ielstlearningapplication.presentation.pages.Login
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -10,7 +9,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
@@ -21,13 +19,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.Checkbox
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -36,6 +31,8 @@ import androidx.navigation.compose.rememberNavController
 import com.example.ielstlearningapplication.ui.theme.IELsTLearningApplicationTheme
 import com.example.ielstlearningapplication.R
 import com.example.ielstlearningapplication.presentation.navGraph.Route
+import com.example.ielstlearningapplication.presentation.pages.Login.Components.InputField
+import com.example.ielstlearningapplication.presentation.pages.Login.Components.LoginPageButton
 
 @Composable
 fun LoginScreen(navController: NavController,onEvent: () -> Unit) {
@@ -87,35 +84,22 @@ fun LoginScreen(navController: NavController,onEvent: () -> Unit) {
 
             Spacer(modifier = Modifier.height(15.dp))
 
-            OutlinedTextField(
-                modifier = Modifier
-                    .width(312.dp)
-                    .height(55.dp)
-                ,
-                textStyle = TextStyle.Default.copy(fontSize = 16.sp),
-                value = userGmail,
-                onValueChange = {userGmail = it},
-                label = {
-                    Text(text="Enter Your Email")
-                }
-                )
+            InputField(
+                fieldValue = userGmail,
+                labelText = "Enter Your Email",
+                onReceiveInput = {userGmail = it}
+            )
 
             Spacer(modifier = Modifier.height(14.dp))
 
-            OutlinedTextField(
-                modifier = Modifier
-                    .width(312.dp)
-                    .height(55.dp)
-                ,
-                textStyle = TextStyle.Default.copy(fontSize = 16.sp),
-                value = userPassword,
-                onValueChange = {userPassword = it},
-                label = {
-                    Text(text="Enter Your Password")
-                }
+            InputField(
+                fieldValue = userPassword,
+                labelText = "Enter Your Password",
+                onReceiveInput = {userPassword = it}
             )
 
             Spacer(modifier = Modifier.height(15.dp))
+
             Row (
                 modifier = Modifier
                     .height(43.dp)
@@ -138,6 +122,7 @@ fun LoginScreen(navController: NavController,onEvent: () -> Unit) {
                     text = "Forgot Password?",
                     fontSize = 15.sp,
                     color = Color(232,105,105),
+                    modifier = Modifier.clickable { /*todo*/ }
                 )
             }
         }
@@ -149,22 +134,17 @@ fun LoginScreen(navController: NavController,onEvent: () -> Unit) {
                 .padding(horizontal = 40.dp, vertical = 10.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ){
-            Button(
-                modifier = Modifier
-                    .height(48.dp)
-                    .width(312.dp),
-                onClick = onEvent,
-                colors = ButtonColors(
+            LoginPageButton(
+                buttonColors = ButtonColors(
                     containerColor = Color(255, 215, 0),
                     contentColor = Color(0, 33, 71),
                     disabledContainerColor = Color(255, 215, 0),
                     disabledContentColor = Color(0, 33, 71)
-                )
-            ) {
-                Text(
-                    text = "Login",
-                )
-            }
+                ),
+                buttonContent = "Login",
+                onButtonClick = onEvent,
+                icon = null
+            )
 
             Spacer(modifier = Modifier.height(20.dp))
 
@@ -177,57 +157,30 @@ fun LoginScreen(navController: NavController,onEvent: () -> Unit) {
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            Button(
-                modifier = Modifier
-                    .height(48.dp)
-                    .width(312.dp),
-                onClick = onEvent,
-                colors = ButtonColors(
+            LoginPageButton(
+                buttonColors = ButtonColors(
                     containerColor = Color(24, 119, 242),
                     contentColor = Color(230, 230, 230),
                     disabledContainerColor = Color(24, 119, 242),
-                    disabledContentColor = Color(230, 230, 230)
-                ),
-            ) {
-                Image(
-                    modifier = Modifier
-                        .size(26.dp)
-                    ,
-                    painter = painterResource(id = R.drawable.facebook_logo),
-                    contentDescription = "Facebook logo"
-                )
-                Text(
-                    modifier = Modifier.padding(horizontal = 30.dp),
-                    text = "Continue with Facebook",
-                )
-            }
+                    disabledContentColor = Color(230, 230, 230)),
+                buttonContent = "Continue with Facebook",
+                icon = R.drawable.facebook_logo,
+                onButtonClick = onEvent
+            )
 
             Spacer(modifier = Modifier.height(15.dp))
 
-            Button(
-                modifier = Modifier
-                    .height(48.dp)
-                    .width(312.dp),
-                onClick = onEvent,
-                colors = ButtonColors(
+            LoginPageButton (
+                buttonColors = ButtonColors(
                     containerColor = Color(235,235,235),
                     contentColor = Color.Black.copy(alpha = 0.6f),
                     disabledContainerColor = Color(235,235,235),
                     disabledContentColor = Color.Black.copy(alpha = 0.6f)
                 ),
-            ) {
-                Image(
-                    modifier = Modifier
-                        .size(26.dp)
-                    ,
-                    painter = painterResource(id = R.drawable.google_logo),
-                    contentDescription = "Facebook logo"
-                )
-                Text(
-                    modifier = Modifier.padding(horizontal = 30.dp),
-                    text = "Continue with Google",
-                )
-            }
+                buttonContent = "Continue with Google",
+                icon = R.drawable.google_logo,
+                onButtonClick = onEvent
+            )
 
             Spacer(modifier = Modifier.height(30.dp))
 
