@@ -15,4 +15,6 @@ sealed class Route(
     object AIScreen: Route(route = "onAIScreen")
     object NotifyScreen: Route(route = "onNotifyScreen")
     object ProfileChangeScreen: Route(route = "onProfileChangeScreen")
+    object SettingScreen: Route(route = "onSettingScreen")
+    object ChangePasswordScreen: Route(route = "onChangePasswordScreen")
 }
