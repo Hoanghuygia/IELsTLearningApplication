@@ -125,15 +125,19 @@ fun LessonScreen(navController: NavHostController) {
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(horizontal = 16.dp),
+                            .padding(horizontal = 0.dp),
                         verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.SpaceBetween
+                        horizontalArrangement = Arrangement.Center
                     ) {
+                        Spacer(modifier = Modifier.width(5.dp))
+
                         // Nút tròn màu trắng (Stop)
                         Box(
                             modifier = Modifier
                                 .size(60.dp)
-                                .background(Color.White, RoundedCornerShape(30.dp)),
+                                .background(Color.White, RoundedCornerShape(30.dp))
+                                .padding(0.dp),
+
                             contentAlignment = Alignment.Center
                         ) {
                             Icon(
@@ -143,7 +147,8 @@ fun LessonScreen(navController: NavHostController) {
                                 modifier = Modifier.size(30.dp)
                             )
                         }
-
+//                        Spacer(modifier = Modifier.fillMaxSize())
+                        Spacer(modifier = Modifier.weight(1f))
                         // Nút lùi
                         IconButton(
                             onClick = { /*TODO*/ },
@@ -151,6 +156,7 @@ fun LessonScreen(navController: NavHostController) {
                                 .background(Color.White, shape = RoundedCornerShape(topStart = 50.dp, bottomStart = 50.dp))
                                 .width(100.dp)
                                 .height(60.dp)
+                                .padding(horizontal = 0.dp)
                         ) {
                             Icon(
                                 imageVector = Icons.Default.ArrowBack,
@@ -160,6 +166,8 @@ fun LessonScreen(navController: NavHostController) {
                             )
                         }
 
+                        Spacer(modifier = Modifier.width(5.dp))
+
                         // Nút tiến
                         IconButton(
                             onClick = { /*TODO*/ },
@@ -167,6 +175,7 @@ fun LessonScreen(navController: NavHostController) {
                                 .background(Color.White, shape = RoundedCornerShape(topEnd = 50.dp, bottomEnd = 50.dp))
                                 .width(100.dp)
                                 .height(60.dp)
+                                .padding(horizontal = 0.dp)
                         ) {
                             Icon(
                                 imageVector = Icons.Default.ArrowForward,
@@ -175,6 +184,8 @@ fun LessonScreen(navController: NavHostController) {
                                 modifier = Modifier.size(22.dp)
                             )
                         }
+                        Spacer(modifier = Modifier.width(5.dp))
+
                     }
                 }
             }
