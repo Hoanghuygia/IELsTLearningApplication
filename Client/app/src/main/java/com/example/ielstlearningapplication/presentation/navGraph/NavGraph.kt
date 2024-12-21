@@ -9,6 +9,8 @@ import com.example.buildprojectwithcompose.ReadingDoingTestScreen
 //import com.example.buildprojectwithcompose.ReadingAnswerScreen
 import com.example.buildprojectwithcompose.ReadingTestScreen
 import com.example.ielstlearningapplication.presentation.pages.AIChat.AIChatScreen
+import com.example.ielstlearningapplication.presentation.pages.ChangePassword.ChangePasswordScreen
+import com.example.ielstlearningapplication.presentation.pages.CreateNewWord.CreateNewWordScreen
 import com.example.ielstlearningapplication.presentation.pages.HomePage.HomePageScreen
 import com.example.ielstlearningapplication.presentation.pages.Library.LibraryScreen
 import com.example.ielstlearningapplication.presentation.pages.Listening.ListeningDoingTestScreen
@@ -18,10 +20,14 @@ import com.example.ielstlearningapplication.presentation.pages.Login.LoginScreen
 import com.example.ielstlearningapplication.presentation.pages.Notify.NotifyScreen
 import com.example.ielstlearningapplication.presentation.pages.Profile.ProfileScreen
 import com.example.ielstlearningapplication.presentation.pages.Reading.ReadingAnswerScreen
+import com.example.ielstlearningapplication.presentation.pages.ProfileChange.ProfileChangeScreen
 import com.example.ielstlearningapplication.presentation.pages.Writing.WritingScreen
 import com.example.ielstlearningapplication.presentation.pages.Reading.ReadingScreen
+import com.example.ielstlearningapplication.presentation.pages.Setting.SettingScreen
+import com.example.ielstlearningapplication.presentation.pages.SignUp.SignUpScreen
 import com.example.ielstlearningapplication.presentation.pages.Speaking.SpeakingScreen
 import com.example.ielstlearningapplication.presentation.pages.Speaking.SpeakingResultScreen
+
 
 
 @Composable
@@ -31,6 +37,16 @@ fun NavGraph(startDestination: String) {
     NavHost(navController = navController, startDestination = startDestination) {
         composable(route = Route.LoginScreen.route) {
             LoginScreen(
+                navController = navController,
+                onEvent = {
+                    navController.navigate(Route.HomeScreen.route)
+                }
+            )
+        }
+
+        composable(route = Route.SignupScreen.route) {
+            SignUpScreen(
+                navController = navController,
                 onEvent = {
                     navController.navigate(Route.HomeScreen.route)
                 }
@@ -44,7 +60,9 @@ fun NavGraph(startDestination: String) {
         }
 
         composable(route = Route.ProfileScreen.route){
-            ProfileScreen()
+            ProfileScreen(
+                navController = navController
+            )
         }
 
         composable(route = Route.ReadingScreen.route){
@@ -64,7 +82,9 @@ fun NavGraph(startDestination: String) {
         }
 
         composable(route = Route.LibraryScreen.route){
-            LibraryScreen()
+            LibraryScreen(
+                navController = navController
+            )
         }
 
         composable(route = Route.AIScreen.route){
@@ -102,6 +122,26 @@ fun NavGraph(startDestination: String) {
 
         composable(route = Route.SpeakingResultScreen.route) {
             SpeakingResultScreen(navController = navController)
+        composable(route = Route.ProfileChangeScreen.route) {
+            ProfileChangeScreen(
+                navController = navController
+            )
+        }
+        //-----------------------------------------------------------------------------
+        composable (route = Route.SettingScreen.route) {
+            SettingScreen(
+                navController = navController
+            )
+        }
+        composable(route = Route.ChangePasswordScreen.route){
+            ChangePasswordScreen(
+                navController = navController
+            )
+        }
+        composable(route = Route.CreateNewWordScreen.route) {
+            CreateNewWordScreen(
+                navController = navController
+            )
         }
     }
 }
