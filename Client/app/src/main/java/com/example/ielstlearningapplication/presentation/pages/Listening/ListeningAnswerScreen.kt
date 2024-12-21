@@ -33,7 +33,7 @@ import com.example.ielstlearningapplication.presentation.pages.Listening.compone
 @Composable
 fun ListeningAnswerScreen(navController: NavHostController) {
     var selectedTab by remember { mutableStateOf(0) }
-    val tabs = listOf("Passage 1", "Passage 2", "Passage 3")
+    val tabs = listOf("Part 1", "Part 2", "Part 3")
     Scaffold(
         topBar = {
             TopAppBar(

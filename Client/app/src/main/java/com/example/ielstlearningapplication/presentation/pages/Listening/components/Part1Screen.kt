@@ -25,7 +25,6 @@ fun Part1Screen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp)
     ) {
 
 

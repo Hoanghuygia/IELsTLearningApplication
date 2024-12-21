@@ -39,7 +39,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.ielstlearningapplication.ui.theme.IELsTLearningApplicationTheme
 
 //import com.example.buildprojectwithcompose.ui.theme.BuildProjectWithComposeTheme
 
@@ -114,7 +113,7 @@ fun Task1Screen() {
                 shape = RoundedCornerShape(12.dp)
             ) {
                 Text(
-                    text = "Practice",
+                    text = "Submit",
                     style = TextStyle(
                         fontSize = 18.sp,
                         fontWeight = FontWeight.Bold
@@ -166,7 +165,7 @@ fun Task2Screen() {
                 shape = RoundedCornerShape(12.dp)
             ) {
                 Text(
-                    text = "Practice",
+                    text = "Submit",
                     style = TextStyle(
                         fontSize = 18.sp,
                         fontWeight = FontWeight.Bold
