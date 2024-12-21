@@ -8,11 +8,12 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.example.ielstlearningapplication.R
 import com.example.ielstlearningapplication.presentation.pages.Listening.components.LessonItem
 
 @Composable
-fun Part2Content(){
+fun Part2Content(navController: NavHostController){
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -36,7 +37,7 @@ fun Part2Content(){
         )
 
         items(items) { (icon, text) ->
-            LessonItem(icon = icon, text = text)
+            LessonItem(icon = icon, text = text, navController)
         }
     }
 }

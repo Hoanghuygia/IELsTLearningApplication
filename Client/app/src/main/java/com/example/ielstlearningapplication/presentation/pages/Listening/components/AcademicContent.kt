@@ -21,10 +21,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.ielstlearningapplication.R
 
 @Composable
-fun AcademicContent() {
+fun AcademicContent(navController: NavHostController) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -47,7 +48,7 @@ fun AcademicContent() {
         )
 
         items(items) { (icon, text) ->
-            LessonItem(icon = icon, text = text)
+            LessonItem(icon = icon, text = text, navController)
         }
     }
 }

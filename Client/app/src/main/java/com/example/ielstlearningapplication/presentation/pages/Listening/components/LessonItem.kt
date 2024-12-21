@@ -15,12 +15,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 
 @Composable
-fun LessonItem (icon: Int, text: String){
+fun LessonItem (icon: Int, text: String, navController: NavHostController){
     Row(
         modifier = Modifier
-            .clickable { /* Xử lý sự kiện click */ }
+            .clickable { navController.navigate("onListeningTestScreen")  }
             .padding(8.dp)
     ) {
         Image(
