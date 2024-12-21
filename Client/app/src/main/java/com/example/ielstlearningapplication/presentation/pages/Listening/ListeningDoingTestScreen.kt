@@ -1,5 +1,8 @@
 package com.example.ielstlearningapplication.presentation.pages.Listening
 
+import Part1Screen
+import Part2Screen
+import Part3Screen
 import Passage1Screen
 import Passage2Screen
 import Passage3Screen
@@ -81,9 +84,9 @@ fun ListeningDoingTestScreen(navController: NavHostController) {
                 }
             }
             when (selectedTab) {
-                0 -> Passage1Screen()
-                1 -> Passage2Screen()
-                2 -> Passage3Screen()
+                0 -> Part1Screen()
+                1 -> Part2Screen()
+                2 -> Part3Screen()
             }
         }
     }

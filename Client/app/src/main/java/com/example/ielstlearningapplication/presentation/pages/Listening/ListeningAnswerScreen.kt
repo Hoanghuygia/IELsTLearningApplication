@@ -3,6 +3,7 @@ package com.example.ielstlearningapplication.presentation.pages.Listening
 
 //package com.example.buildprojectwithcompose
 
+import Part1Screen
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -27,8 +28,6 @@ import androidx.navigation.compose.rememberNavController
 import com.example.ielstlearningapplication.presentation.pages.Listening.components.Part1AnswerScreen
 import com.example.ielstlearningapplication.presentation.pages.Listening.components.Part2AnswerScreen
 import com.example.ielstlearningapplication.presentation.pages.Listening.components.Part3AnswerScreen
-import com.example.ielstlearningapplication.presentation.pages.Reading.components.Passage2AnswerScreen
-import com.example.ielstlearningapplication.presentation.pages.Reading.components.Passage3AnswerScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
