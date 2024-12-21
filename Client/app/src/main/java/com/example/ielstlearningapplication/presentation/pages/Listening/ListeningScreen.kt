@@ -16,21 +16,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
-import com.example.ielstlearningapplication.presentation.navGraph.Route
-import com.example.ielstlearningapplication.presentation.pages.HomePage.components.BottomBar
-import com.example.ielstlearningapplication.presentation.pages.HomePage.components.ContentHolder
-import com.example.ielstlearningapplication.presentation.pages.HomePage.components.ProfileHolder
-import com.example.ielstlearningapplication.presentation.pages.HomePage.data.HomeScreenData
-import com.example.ielstlearningapplication.presentation.pages.HomePage.data.user
 import com.example.ielstlearningapplication.presentation.pages.Listening.components.SearchBar
 import com.example.ielstlearningapplication.presentation.pages.Listening.components.TabBar
-import com.example.ielstlearningapplication.presentation.pages.Notify.NotifyScreen
-import com.example.ielstlearningapplication.ui.theme.IELsTLearningApplicationTheme
 
 @Composable
 fun ListeningScreen(navController: NavHostController) {
@@ -58,14 +47,14 @@ fun ListeningScreen(navController: NavHostController) {
 
 
 
-@Preview(showBackground = true)
-@Composable
-fun PreviewListeningScreen() {
-    IELsTLearningApplicationTheme {
-        val navController = rememberNavController()
-        ListeningScreen(navController)
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun PreviewListeningScreen() {
+//    IELsTLearningApplicationTheme {
+//        val navController = rememberNavController()
+//        ListeningScreen(navController)
+//    }
+//}
 
 
 

@@ -1,4 +1,4 @@
-package com.example.ielstlearningapplication.presentation.pages.Reading.components
+//package com.example.ielstlearningapplication.presentation.pages.Reading.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -62,7 +62,6 @@ fun Passage1Screen() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Second scrollable list
         LazyColumn(
             modifier = Modifier
                 .fillMaxWidth()

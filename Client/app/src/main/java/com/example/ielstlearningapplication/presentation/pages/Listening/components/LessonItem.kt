@@ -16,7 +16,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.example.buildprojectwithcompose.ReadingTestScreen
 
 @Composable
 fun LessonItem (icon: Int, text: String, navController: NavHostController){
