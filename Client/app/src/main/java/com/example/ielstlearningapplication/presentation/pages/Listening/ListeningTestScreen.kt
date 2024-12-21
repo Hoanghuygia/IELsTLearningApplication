@@ -61,7 +61,7 @@ fun ListeningTestScreen(navController: NavHostController) {
                 title = {
                     Text(
                         "Cambridge IELTS 16 Academic \n" +
-                                "Reading - Test 1"
+                                "Listening - Test 1"
                     )
                 },
                 navigationIcon = {
