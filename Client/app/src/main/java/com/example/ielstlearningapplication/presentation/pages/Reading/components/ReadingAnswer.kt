@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun Passage2Screen() {
+fun ReadingAnswer() {
     ToolBar()
     Column(
         modifier = Modifier
@@ -62,6 +62,7 @@ fun Passage2Screen() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
+        // Second scrollable list
         LazyColumn(
             modifier = Modifier
                 .fillMaxWidth()

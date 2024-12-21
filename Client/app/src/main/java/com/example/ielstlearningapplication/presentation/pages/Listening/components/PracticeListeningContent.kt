@@ -35,6 +35,7 @@ fun PracticeListeningContent(navController: NavHostController) {
     var selectedPassage1 by remember { mutableStateOf(false) }
     var selectedPassage2 by remember { mutableStateOf(false) }
     var selectedPassage3 by remember { mutableStateOf(false) }
+    var selectedPassage4 by remember { mutableStateOf(false) }
 
     Column(
         modifier = Modifier
@@ -51,22 +52,28 @@ fun PracticeListeningContent(navController: NavHostController) {
         )
 
         PassageCard(
-            title = "Passage 1 (13 questions)",
+            title = "Part 1 (10 questions)",
+            description = "Table/Note/Flow chart Completion\nSentence Completion\nTrue/False/Not Given",
+            isChecked = selectedPassage1,
+            onCheckedChange = { selectedPassage1 = it }
+        )
+        PassageCard(
+            title = "Part 2 (10 questions)",
             description = "Table/Note/Flow chart Completion\nSentence Completion\nTrue/False/Not Given",
             isChecked = selectedPassage2,
             onCheckedChange = { selectedPassage2 = it }
         )
         PassageCard(
-            title = "Passage 2 (13 questions)",
+            title = "Part 3 (10 questions)",
             description = "Table/Note/Flow chart Completion\nSentence Completion\nTrue/False/Not Given",
-            isChecked = selectedPassage2,
-            onCheckedChange = { selectedPassage2 = it }
+            isChecked = selectedPassage3,
+            onCheckedChange = { selectedPassage3 = it }
         )
         PassageCard(
-            title = "Passage 3 (13 questions)",
+            title = "Part 4 (10 questions)",
             description = "Table/Note/Flow chart Completion\nSentence Completion\nTrue/False/Not Given",
-            isChecked = selectedPassage2,
-            onCheckedChange = { selectedPassage2 = it }
+            isChecked = selectedPassage4,
+            onCheckedChange = { selectedPassage4 = it }
         )
 
         Spacer(modifier = Modifier.weight(1f))
