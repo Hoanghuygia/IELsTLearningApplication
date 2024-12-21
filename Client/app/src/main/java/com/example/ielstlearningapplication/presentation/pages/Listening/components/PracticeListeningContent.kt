@@ -2,13 +2,8 @@ package com.example.ielstlearningapplication.presentation.pages.Listening.compon
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -37,52 +32,67 @@ fun PracticeListeningContent(navController: NavHostController) {
     var selectedPassage3 by remember { mutableStateOf(false) }
     var selectedPassage4 by remember { mutableStateOf(false) }
 
-    Column(
+    LazyColumn(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        Text(
-            text = "Select the section you want to take.",
-            style = TextStyle(
-                fontSize = 16.sp,
-                fontWeight = FontWeight.W600
-            ),
-            modifier = Modifier.padding(bottom = 16.dp)
-        )
+        item {
+            Text(
+                text = "Select the section you want to take.",
+                style = TextStyle(
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.W600
+                ),
+                modifier = Modifier.padding(bottom = 16.dp)
+            )
+        }
 
-        PassageCard(
-            title = "Part 1 (10 questions)",
-            description = "Table/Note/Flow chart Completion\nSentence Completion\nTrue/False/Not Given",
-            isChecked = selectedPassage1,
-            onCheckedChange = { selectedPassage1 = it }
-        )
-        PassageCard(
-            title = "Part 2 (10 questions)",
-            description = "Table/Note/Flow chart Completion\nSentence Completion\nTrue/False/Not Given",
-            isChecked = selectedPassage2,
-            onCheckedChange = { selectedPassage2 = it }
-        )
-        PassageCard(
-            title = "Part 3 (10 questions)",
-            description = "Table/Note/Flow chart Completion\nSentence Completion\nTrue/False/Not Given",
-            isChecked = selectedPassage3,
-            onCheckedChange = { selectedPassage3 = it }
-        )
-        PassageCard(
-            title = "Part 4 (10 questions)",
-            description = "Table/Note/Flow chart Completion\nSentence Completion\nTrue/False/Not Given",
-            isChecked = selectedPassage4,
-            onCheckedChange = { selectedPassage4 = it }
-        )
+        item {
+            PassageCard(
+                title = "Part 1 (10 questions)",
+                description = "Table/Note/Flow chart Completion\nSentence Completion\nTrue/False/Not Given",
+                isChecked = selectedPassage1,
+                onCheckedChange = { selectedPassage1 = it }
+            )
+        }
 
-        Spacer(modifier = Modifier.weight(1f))
-        
-        MaxButton(
-            text = "Practice",
-            onClick = { navController.navigate("onReadingAnswerScreen") },
-        )
+        item {
+            PassageCard(
+                title = "Part 2 (10 questions)",
+                description = "Table/Note/Flow chart Completion\nSentence Completion\nTrue/False/Not Given",
+                isChecked = selectedPassage2,
+                onCheckedChange = { selectedPassage2 = it }
+            )
+        }
 
+        item {
+            PassageCard(
+                title = "Part 3 (10 questions)",
+                description = "Table/Note/Flow chart Completion\nSentence Completion\nTrue/False/Not Given",
+                isChecked = selectedPassage3,
+                onCheckedChange = { selectedPassage3 = it }
+            )
+        }
 
+        item {
+            PassageCard(
+                title = "Part 4 (10 questions)",
+                description = "Table/Note/Flow chart Completion\nSentence Completion\nTrue/False/Not Given",
+                isChecked = selectedPassage4,
+                onCheckedChange = { selectedPassage4 = it }
+            )
+        }
+
+        item {
+            Spacer(modifier = Modifier.height(16.dp))
+        }
+
+        item {
+            MaxButton(
+                text = "Practice",
+                onClick = { navController.navigate("onListeningDoingTestScreen") },
+            )
+        }
     }
 }

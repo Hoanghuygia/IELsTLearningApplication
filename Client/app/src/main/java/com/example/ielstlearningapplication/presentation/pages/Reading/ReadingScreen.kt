@@ -13,7 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.ielstlearningapplication.presentation.pages.Reading.components.SearchBar
+import com.example.ielstlearningapplication.presentation.pages.ComponentListenAndRead.SearchBar
 import com.example.ielstlearningapplication.presentation.pages.Reading.components.TabBar
 import com.example.ielstlearningapplication.ui.theme.IELsTLearningApplicationTheme
 

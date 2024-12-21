@@ -1,4 +1,4 @@
-package com.example.ielstlearningapplication.presentation.pages.Reading.components
+package com.example.ielstlearningapplication.presentation.pages.ComponentListenAndRead
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border

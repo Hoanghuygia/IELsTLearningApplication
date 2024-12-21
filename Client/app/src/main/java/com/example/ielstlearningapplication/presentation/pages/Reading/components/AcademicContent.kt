@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.ielstlearningapplication.R
-import com.example.ielstlearningapplication.presentation.pages.Listening.components.LessonItem
+//import com.example.ielstlearningapplication.presentation.pages.Reading.components.LessonReadingItem
 
 @Composable
 fun AcademicContent(navController: NavHostController) {
@@ -49,7 +49,7 @@ fun AcademicContent(navController: NavHostController) {
         )
 
         items(items) { (icon, text,) ->
-            LessonItem(icon = icon, text = text,navController)
+            LessonReadingItem(icon = icon, text = text,navController)
         }
     }
 }

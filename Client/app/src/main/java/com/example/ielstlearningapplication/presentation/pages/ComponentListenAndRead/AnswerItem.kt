@@ -1,3 +1,5 @@
+package com.example.ielstlearningapplication.presentation.pages.ComponentListenAndRead
+
 //package com.example.ielstlearningapplication.presentation.pages.Reading.components
 
 import androidx.compose.foundation.layout.Column
@@ -21,7 +23,7 @@ import androidx.compose.ui.unit.sp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun QuestionItem(
+fun AnswerItem(
     questionNumber: Int,
     questionText: String,
     answerKey: String,
@@ -54,7 +56,7 @@ fun QuestionItem(
                 .width(174.dp)
                 .padding(vertical = 0.dp),
             colors = TextFieldDefaults.textFieldColors(
-//                containerColor = Color(0xFFFFC1C1), // Light pink background
+                containerColor = Color(0xFFFFC1C1), // Light pink background
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent
             ),
@@ -64,14 +66,14 @@ fun QuestionItem(
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        // Answer key
-//        Text(
-//            text = "Answer key: $answerKey",
-//            style = TextStyle(
-//                fontSize = 14.sp,
-//                fontWeight = FontWeight.W400,
-//                color = Color(0xFF007F00) // Green color for answer key
-//            )
-//        )
+//         Answer key
+        Text(
+            text = "Answer key: $answerKey",
+            style = TextStyle(
+                fontSize = 14.sp,
+                fontWeight = FontWeight.W400,
+                color = Color(0xFF007F00) // Green color for answer key
+            )
+        )
     }
 }

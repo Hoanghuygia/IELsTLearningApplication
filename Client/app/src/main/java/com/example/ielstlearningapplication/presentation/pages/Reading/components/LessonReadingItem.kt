@@ -1,4 +1,4 @@
-package com.example.ielstlearningapplication.presentation.pages.Listening.components
+package com.example.ielstlearningapplication.presentation.pages.Reading.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -18,10 +18,10 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 
 @Composable
-fun LessonItem (icon: Int, text: String, navController: NavHostController){
+fun LessonReadingItem (icon: Int, text: String, navController: NavHostController){
     Row(
         modifier = Modifier
-            .clickable { navController.navigate("onListeningTestScreen")  }
+            .clickable { navController.navigate("onReadingTestScreen")  }
             .padding(8.dp)
     ) {
         Image(

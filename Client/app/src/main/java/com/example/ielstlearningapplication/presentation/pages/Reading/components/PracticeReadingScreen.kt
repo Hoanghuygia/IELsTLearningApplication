@@ -140,7 +140,7 @@ fun PracticeScreen(navController: NavHostController) {
         Spacer(modifier = Modifier.weight(1f))
 
         Button(
-            onClick = { navController.navigate("onReadingAnswerScreen") },
+            onClick = { navController.navigate("onReadingDoingTestScreen") },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = 16.dp)

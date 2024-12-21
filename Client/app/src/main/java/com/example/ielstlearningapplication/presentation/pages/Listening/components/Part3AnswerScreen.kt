@@ -1,5 +1,6 @@
-//package com.example.ielstlearningapplication.presentation.pages.Reading.components
+package com.example.ielstlearningapplication.presentation.pages.Listening.components
 
+import ToolBar
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,10 +18,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.ielstlearningapplication.presentation.pages.ComponentListenAndRead.QuestionItem
+import com.example.ielstlearningapplication.presentation.pages.ComponentListenAndRead.AnswerItem
 
 @Composable
-fun Passage2Screen() {
+fun Part3AnswerScreen() {
     ToolBar()
     Column(
         modifier = Modifier
@@ -63,6 +64,7 @@ fun Passage2Screen() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
+        // Second scrollable list
         LazyColumn(
             modifier = Modifier
                 .fillMaxWidth()
@@ -83,21 +85,21 @@ fun Passage2Screen() {
                     lineHeight = 24.sp
                 )
                 var userAnswer by remember { mutableStateOf("") }
-                QuestionItem(
+                AnswerItem(
                     questionNumber = 1,
                     questionText = "Vertical tubes are used to grow strawberries, _______ and herbs.",
                     answerKey = "textanswer",
                     userAnswer = userAnswer,
                     onAnswerChange = { userAnswer = it }
                 )
-                QuestionItem(
+                AnswerItem(
                     questionNumber = 2,
                     questionText = "Vertical tubes are used to grow strawberries, _______ and herbs.",
                     answerKey = "textanswer",
                     userAnswer = userAnswer,
                     onAnswerChange = { userAnswer = it }
                 )
-                QuestionItem(
+                AnswerItem(
                     questionNumber = 3,
                     questionText = "Vertical tubes are used to grow strawberries, _______ and herbs.",
                     answerKey = "textanswer",

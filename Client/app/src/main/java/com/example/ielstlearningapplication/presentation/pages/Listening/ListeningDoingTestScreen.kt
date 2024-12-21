@@ -1,9 +1,15 @@
-package com.example.ielstlearningapplication.presentation.pages.Reading
+package com.example.ielstlearningapplication.presentation.pages.Listening
 
-//package com.example.buildprojectwithcompose
-
+import Passage1Screen
+import Passage2Screen
+import Passage3Screen
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -20,18 +26,20 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.ielstlearningapplication.presentation.pages.Reading.components.Passage1AnswerScreen
-import com.example.ielstlearningapplication.presentation.pages.Reading.components.Passage2AnswerScreen
-import com.example.ielstlearningapplication.presentation.pages.Reading.components.Passage3AnswerScreen
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ReadingAnswerScreen(navController: NavHostController) {
+fun ListeningDoingTestScreen(navController: NavHostController) {
     var selectedTab by remember { mutableStateOf(0) }
-    val tabs = listOf("Passage 1", "Passage 2", "Passage 3")
+    val tabs = listOf("Part 1", "Part 2", "Part 3")
     Scaffold(
         topBar = {
             TopAppBar(
@@ -43,8 +51,23 @@ fun ReadingAnswerScreen(navController: NavHostController) {
                             contentDescription = "Back"
                         )
                     }
+                },
+                actions = {
+                    IconButton(
+                        onClick = { navController.navigate("onListeningAnswerScreen") },
+                        modifier = Modifier
+                            .width(64.dp)
+                            .height(36.dp)
+                            .clip(RoundedCornerShape(8.dp))
+                            .background(Color(0xFFFFD700))
+                            .padding(horizontal = 8.dp)
+                    ) {
+                        Text("Submit", style = TextStyle(color = Color.White))
+                    }
+                    Spacer(modifier = Modifier.width(10.dp))
                 }
             )
+
         }
     ) { paddingValues ->
         Column(modifier = Modifier.padding(paddingValues)) {
@@ -58,9 +81,9 @@ fun ReadingAnswerScreen(navController: NavHostController) {
                 }
             }
             when (selectedTab) {
-                0 -> Passage1AnswerScreen()
-                1 -> Passage2AnswerScreen()
-                2 -> Passage3AnswerScreen()
+                0 -> Passage1Screen()
+                1 -> Passage2Screen()
+                2 -> Passage3Screen()
             }
         }
     }
@@ -68,9 +91,8 @@ fun ReadingAnswerScreen(navController: NavHostController) {
 
 @Preview(showBackground = true)
 @Composable
-fun ReadingAnswerScreenPreview() {
-
+fun ListeningDoingTestScreenPreview() {
     val navController = rememberNavController()
-    ReadingAnswerScreen(navController)
+    ListeningDoingTestScreen(navController)
 
 }

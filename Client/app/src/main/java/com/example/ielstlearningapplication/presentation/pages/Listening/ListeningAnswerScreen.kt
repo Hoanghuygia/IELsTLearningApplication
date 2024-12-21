@@ -1,4 +1,5 @@
-package com.example.ielstlearningapplication.presentation.pages.Reading
+package com.example.ielstlearningapplication.presentation.pages.Listening
+
 
 //package com.example.buildprojectwithcompose
 
@@ -23,13 +24,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.ielstlearningapplication.presentation.pages.Reading.components.Passage1AnswerScreen
+import com.example.ielstlearningapplication.presentation.pages.Listening.components.Part1AnswerScreen
+import com.example.ielstlearningapplication.presentation.pages.Listening.components.Part2AnswerScreen
+import com.example.ielstlearningapplication.presentation.pages.Listening.components.Part3AnswerScreen
 import com.example.ielstlearningapplication.presentation.pages.Reading.components.Passage2AnswerScreen
 import com.example.ielstlearningapplication.presentation.pages.Reading.components.Passage3AnswerScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ReadingAnswerScreen(navController: NavHostController) {
+fun ListeningAnswerScreen(navController: NavHostController) {
     var selectedTab by remember { mutableStateOf(0) }
     val tabs = listOf("Passage 1", "Passage 2", "Passage 3")
     Scaffold(
@@ -58,9 +61,9 @@ fun ReadingAnswerScreen(navController: NavHostController) {
                 }
             }
             when (selectedTab) {
-                0 -> Passage1AnswerScreen()
-                1 -> Passage2AnswerScreen()
-                2 -> Passage3AnswerScreen()
+                0 -> Part1AnswerScreen()
+                1 -> Part2AnswerScreen()
+                2 -> Part3AnswerScreen()
             }
         }
     }
@@ -68,9 +71,9 @@ fun ReadingAnswerScreen(navController: NavHostController) {
 
 @Preview(showBackground = true)
 @Composable
-fun ReadingAnswerScreenPreview() {
+fun ListeningAnswerScreenPreview() {
 
     val navController = rememberNavController()
-    ReadingAnswerScreen(navController)
+    ListeningAnswerScreen(navController)
 
 }

@@ -4,18 +4,22 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.compose.composable
-import com.example.buildprojectwithcompose.ReadingAnswerScreen
+import com.example.buildprojectwithcompose.ListeningTestScreen
+import com.example.buildprojectwithcompose.ReadingDoingTestScreen
+//import com.example.buildprojectwithcompose.ReadingAnswerScreen
 import com.example.buildprojectwithcompose.ReadingTestScreen
 import com.example.ielstlearningapplication.presentation.pages.AIChat.AIChatScreen
 import com.example.ielstlearningapplication.presentation.pages.HomePage.HomePageScreen
 import com.example.ielstlearningapplication.presentation.pages.Library.LibraryScreen
+import com.example.ielstlearningapplication.presentation.pages.Listening.ListeningDoingTestScreen
 import com.example.ielstlearningapplication.presentation.pages.Listening.ListeningScreen
+import com.example.ielstlearningapplication.presentation.pages.Listening.ListeningAnswerScreen
 import com.example.ielstlearningapplication.presentation.pages.Login.LoginScreen
 import com.example.ielstlearningapplication.presentation.pages.Notify.NotifyScreen
 import com.example.ielstlearningapplication.presentation.pages.Profile.ProfileScreen
+import com.example.ielstlearningapplication.presentation.pages.Reading.ReadingAnswerScreen
 import com.example.ielstlearningapplication.presentation.pages.Writing.WritingScreen
 import com.example.ielstlearningapplication.presentation.pages.Reading.ReadingScreen
-import com.example.ielstlearningapplication.presentation.pages.Speaking.LessonScreen
 import com.example.ielstlearningapplication.presentation.pages.Speaking.SpeakingScreen
 import com.example.ielstlearningapplication.presentation.pages.Speaking.SpeakingResultScreen
 
@@ -69,20 +73,35 @@ fun NavGraph(startDestination: String) {
         composable(route = Route.NotifyScreen.route) {
             NotifyScreen()
         }
-        composable(route = Route.NotifyScreen.route) {
-            NotifyScreen()
-        }
+//        composable(route = Route.NotifyScreen.route) {
+//            NotifyScreen()
+//        }
+        //-----------Reading-------------------------------------------------------
         composable(route = Route.ReadingTestScreen.route) {
             ReadingTestScreen(navController = navController)
+        }
+        composable(route = Route.ReadingDoingTestScreen.route) {
+            ReadingDoingTestScreen(navController = navController)
         }
         composable(route = Route.ReadingAnswerScreen.route) {
             ReadingAnswerScreen(navController = navController)
         }
+
+
+        //-----------Listening----------------------------------------------------------
+        composable(route = Route.ListeningDoingTestScreen.route) {
+            ListeningDoingTestScreen(navController = navController)
+        }
+        composable(route = Route.ListeningTestScreen.route) {
+            ListeningTestScreen(navController = navController)
+        }
+        composable(route = Route.ListeningAnswerScreen.route) {
+            ListeningAnswerScreen(navController = navController)
+        }
+        //-----------Speaking----------------------------------------------------------
+
         composable(route = Route.SpeakingResultScreen.route) {
             SpeakingResultScreen(navController = navController)
-        }
-        composable(route = Route.LessonScreen.route) {
-            LessonScreen(navController = navController)
         }
     }
 }
