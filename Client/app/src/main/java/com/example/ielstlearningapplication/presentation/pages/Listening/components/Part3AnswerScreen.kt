@@ -29,38 +29,6 @@ fun Part3AnswerScreen() {
             .padding(16.dp)
     ) {
 
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxWidth()
-                .weight(1f)
-        ) {
-            item {
-                Text(
-                    text = "You should spend about 20 minutes on Questions 1-13, which are based on Reading Passage 1 below.\n",
-                    modifier = Modifier.padding(horizontal = 16.dp),
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.W400,
-                    lineHeight = 24.sp
-                )
-                Text(
-                    text = "Urban Farming",
-                    modifier = Modifier.padding(horizontal = 16.dp),
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.Bold,
-                    lineHeight = 24.sp
-                )
-                Text(
-                    text = "In Paris, urban farmers are trying a soil-free approach to agriculture that uses less space and fewer resources. Could it help cities face the threats to our food supplies?\n" +
-                            "On top of a striking new exhibition hall in southern Paris, the world’s largest urban rooftop farm has started to bear fruit. Strawberries that are small, intensely flavoured and resplendently red sprout abundantly from large plastic tubes. Peer inside and you see the tubes are completely hollow, the roots of dozens of strawberry plants dangling down inside them. From identical vertical tubes nearby burst row upon row of lettuces; near those",
-                    modifier = Modifier.padding(horizontal = 16.dp),
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.W400,
-                    lineHeight = 24.sp
-                )
-            }
-        }
-
-
 
         Spacer(modifier = Modifier.height(16.dp))
 
