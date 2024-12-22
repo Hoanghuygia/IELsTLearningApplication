@@ -22,6 +22,8 @@ import com.example.ielstlearningapplication.presentation.pages.Writing.WritingSc
 import com.example.ielstlearningapplication.presentation.pages.Reading.ReadingScreen
 import com.example.ielstlearningapplication.presentation.pages.Speaking.SpeakingScreen
 import com.example.ielstlearningapplication.presentation.pages.Speaking.SpeakingResultScreen
+import com.example.ielstlearningapplication.presentation.pages.Speaking.LessonScreen
+
 
 
 @Composable
@@ -103,5 +105,9 @@ fun NavGraph(startDestination: String) {
         composable(route = Route.SpeakingResultScreen.route) {
             SpeakingResultScreen(navController = navController)
         }
+        composable(route = Route.LessonScreen.route) {
+            LessonScreen(navController = navController)
+        }
+
     }
 }

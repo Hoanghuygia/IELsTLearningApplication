@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -23,6 +24,7 @@ fun LessonItem (icon: Int, text: String, navController: NavHostController){
         modifier = Modifier
             .clickable { navController.navigate("onLessonScreen")  }
             .padding(8.dp)
+            .fillMaxSize()
     ) {
         Image(
             painter = painterResource(id = icon),

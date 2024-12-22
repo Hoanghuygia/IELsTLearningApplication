@@ -27,6 +27,7 @@ sealed class Route(
 
     //speaking
     object SpeakingResultScreen: Route(route = "onSpeakingResultScreen")
+    object LessonScreen: Route(route = "onLessonScreen")
 
 
 
