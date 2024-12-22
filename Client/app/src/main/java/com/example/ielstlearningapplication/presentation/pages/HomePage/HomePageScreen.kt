@@ -76,12 +76,14 @@ fun HomePageScreen(navController: NavController) {
                 }
 
                 1 -> {
-                LibraryScreen()
-            }
-            2->{
-                NotifyScreen()
-            }
-            else -> {
+                    LibraryScreen()
+                }
+
+                2 -> {
+                    NotifyScreen()
+                }
+
+                else -> {
                     Text(text = HomeScreenData.screens[bottomNavState].title)
                 }
             }
