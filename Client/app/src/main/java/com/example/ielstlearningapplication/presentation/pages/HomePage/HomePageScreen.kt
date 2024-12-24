@@ -28,6 +28,8 @@ import com.example.ielstlearningapplication.presentation.pages.HomePage.data.Hom
 import com.example.ielstlearningapplication.presentation.pages.HomePage.data.user
 import com.example.ielstlearningapplication.presentation.pages.Library.LibraryScreen
 import com.example.ielstlearningapplication.presentation.pages.Notify.NotifyScreen
+import com.example.ielstlearningapplication.presentation.pages.Profile.ProfileScreen
+import com.example.ielstlearningapplication.presentation.pages.Setting.SettingScreen
 import com.example.ielstlearningapplication.ui.theme.IELsTLearningApplicationTheme
 
 @Composable
@@ -76,17 +78,21 @@ fun HomePageScreen(navController: NavController) {
                 }
 
                 1 -> {
-                    LibraryScreen()
+                    LibraryScreen(navController)
                 }
-
-                2 -> {
+                2->{
                     NotifyScreen()
                 }
-
-                else -> {
-                    Text(text = HomeScreenData.screens[bottomNavState].title)
+                3 -> {
+                    ProfileScreen(navController)
                 }
-            }
+                4 -> {
+                    SettingScreen(navController)
+                }
+                else -> {
+                        Text(text = HomeScreenData.screens[bottomNavState].title)
+                    }
+                }
         }
     }
 }
