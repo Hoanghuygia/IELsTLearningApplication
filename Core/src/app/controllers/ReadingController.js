@@ -3,7 +3,6 @@ import Reading from '../models/Readings.model.js';
 
 export class ReadingController {
     getAllReading = async (req, res, next) => {
-        console.log("abc")
         try {
             const readings = await Reading.find().populate('content'); 
 

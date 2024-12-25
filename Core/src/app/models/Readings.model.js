@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { Schema } from "mongoose";
+import Content from "./Content.model.js";
 
 const readingSchema = new Schema({
     label: {
