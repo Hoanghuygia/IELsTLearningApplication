@@ -28,7 +28,6 @@ export class UserController {
 
             await newUser.save();
 
-            // Trả về phản hồi khi thêm thành công
             return res.status(201).json({
                 message: 'User added successfully',
                 user: {
