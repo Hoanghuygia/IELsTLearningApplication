@@ -14,7 +14,9 @@ export class SpeakingController {
                 message: "Speaking found",
                 speakings,
             });
+            
         } catch (error) {
+            console.error("Error in getAllSpeaking:", error); 
             return res.status(500).json({ message: "Server error" });
         }
     };
