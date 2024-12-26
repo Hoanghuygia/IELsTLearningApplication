@@ -23,6 +23,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.ielstlearningapplication.R
+import com.example.ielstlearningapplication.presentation.pages.HomePage.data.lessons
+
 //import com.example.ielstlearningapplication.presentation.pages.Reading.components.LessonReadingItem
 
 @Composable
@@ -33,23 +35,8 @@ fun AcademicContent(navController: NavHostController) {
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        val items = listOf(
-            R.drawable.done to "Cambridge IELTS 16 Academic Reading - Test 1",
-            R.drawable.notdone to "Cambridge IELTS 16 Academic Reading - Test 2",
-            R.drawable.clock to "Cambridge IELTS 16 Academic Reading - Test 3",
-            R.drawable.notdone to "Cambridge IELTS 16 Academic Reading - Test 4",
-            R.drawable.done to "Cambridge IELTS 16 Academic Reading - Test 1",
-            R.drawable.notdone to "Cambridge IELTS 16 Academic Reading - Test 2",
-            R.drawable.clock to "Cambridge IELTS 16 Academic Reading - Test 3",
-            R.drawable.notdone to "Cambridge IELTS 16 Academic Reading - Test 4",
-            R.drawable.done to "Cambridge IELTS 16 Academic Reading - Test 1",
-            R.drawable.notdone to "Cambridge IELTS 16 Academic Reading - Test 2",
-            R.drawable.clock to "Cambridge IELTS 16 Academic Reading - Test 3",
-            R.drawable.notdone to "Cambridge IELTS 16 Academic Reading - Test 4"
-        )
-
-        items(items) { (icon, text,) ->
-            LessonReadingItem(icon = icon, text = text,navController)
+        items(lessons) { lesson ->
+            LessonReadingItem(lesson,navController)
         }
     }
 }

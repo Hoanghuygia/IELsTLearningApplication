@@ -16,22 +16,23 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.example.ielstlearningapplication.presentation.pages.HomePage.data.FakeLesson
 
 @Composable
-fun LessonReadingItem (icon: Int, text: String, navController: NavHostController){
+fun LessonReadingItem (lesson: FakeLesson, navController: NavHostController){
     Row(
         modifier = Modifier
             .clickable { navController.navigate("onReadingTestScreen")  }
             .padding(8.dp)
     ) {
         Image(
-            painter = painterResource(id = icon),
+            painter = painterResource(id = lesson.image),
             contentDescription = null,
             modifier = Modifier.size(48.dp)
         )
         Spacer(modifier = Modifier.width(16.dp))
         Text(
-            text = text,
+            text = lesson.text,
             fontSize = 18.sp,
             color = Color.Black,
             modifier = Modifier.align(Alignment.CenterVertically)
