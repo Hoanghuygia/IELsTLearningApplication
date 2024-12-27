@@ -5,26 +5,22 @@ import androidx.compose.material.icons.filled.Book
 import androidx.compose.material.icons.filled.Draw
 import androidx.compose.material.icons.filled.Forum
 import androidx.compose.material.icons.filled.Headphones
-import androidx.compose.material.icons.outlined.Headphones
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.ImportContacts
 import androidx.compose.material.icons.filled.Mic
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material.icons.filled.Style
 import androidx.compose.material.icons.outlined.Book
 import androidx.compose.material.icons.outlined.Draw
 import androidx.compose.material.icons.outlined.Forum
+import androidx.compose.material.icons.outlined.Headphones
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.ImportContacts
 import androidx.compose.material.icons.outlined.Mic
 import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.Settings
-import androidx.compose.material.icons.outlined.Style
-//import androidx.compose.material.icons.filled.Stylus
-//import androidx.compose.material.icons.outlined.Stylus
 import com.example.ielstlearningapplication.presentation.navGraph.Route
 
 object HomeScreenData {
@@ -51,7 +47,8 @@ object HomeScreenData {
             Icons.Outlined.Notifications,
             Route.HomeScreen.route,
             hasBadge = true,
-            badgeNum = 10
+            badgeNum = 0,
+
         ),
         HomePageNavItem(
             title = "Account",

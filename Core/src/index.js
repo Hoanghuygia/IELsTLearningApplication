@@ -15,6 +15,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
+// app.use("/", (req, res) => {
+//     res.send("Welcome to the server!!!!")
+// })
+
 route(app)
 handleError(app)
 config();

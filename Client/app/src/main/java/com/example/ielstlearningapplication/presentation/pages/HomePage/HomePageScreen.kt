@@ -26,6 +26,10 @@ import com.example.ielstlearningapplication.presentation.pages.HomePage.componen
 import com.example.ielstlearningapplication.presentation.pages.HomePage.components.ProfileHolder
 import com.example.ielstlearningapplication.presentation.pages.HomePage.data.HomeScreenData
 import com.example.ielstlearningapplication.presentation.pages.HomePage.data.user
+import com.example.ielstlearningapplication.presentation.pages.Library.LibraryScreen
+import com.example.ielstlearningapplication.presentation.pages.Notify.NotifyScreen
+import com.example.ielstlearningapplication.presentation.pages.Profile.ProfileScreen
+import com.example.ielstlearningapplication.presentation.pages.Setting.SettingScreen
 import com.example.ielstlearningapplication.ui.theme.IELsTLearningApplicationTheme
 
 @Composable
@@ -43,34 +47,53 @@ fun HomePageScreen(navController: NavController) {
                 onNavItemClicked = { index -> bottomNavState = index }
             )
         }
-    ) { _ ->
-        when (bottomNavState) {
-            0 -> {
-                Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(Color.White)
-                        .padding(start = 32.dp, end = 32.dp, top = 50.dp),
-                    verticalArrangement = Arrangement.spacedBy(32.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    ProfileHolder(user, modifier = Modifier, onEvent = ::navigateProfile)
+    ) { innerPadding ->
+        Box(modifier = Modifier.padding(innerPadding)) {
+            when (bottomNavState) {
+                0 -> {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(Color.White)
+                            .padding(start = 32.dp, end = 32.dp, top = 50.dp),
+                        verticalArrangement = Arrangement.spacedBy(32.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        ProfileHolder(user, modifier = Modifier, onEvent = ::navigateProfile)
 
-                    val homePageItemLength = HomeScreenData.homePageItem.size
-                    if (homePageItemLength % 2 == 0) {
-                        for (i in 0 until homePageItemLength - 1 step 2) {
-                            val first = HomeScreenData.homePageItem[i]
-                            val second = HomeScreenData.homePageItem[i + 1]
-                            ContentHolder(first, second, modifier = Modifier, navController = navController)
+                        val homePageItemLength = HomeScreenData.homePageItem.size
+                        if (homePageItemLength % 2 == 0) {
+                            for (i in 0 until homePageItemLength - 1 step 2) {
+                                val first = HomeScreenData.homePageItem[i]
+                                val second = HomeScreenData.homePageItem[i + 1]
+                                ContentHolder(
+                                    first,
+                                    second,
+                                    modifier = Modifier,
+                                    navController = navController
+                                )
+                            }
                         }
                     }
                 }
-            }
-            else -> {
-                Text(text = HomeScreenData.screens[bottomNavState].title)
-            }
-        }
 
+                1 -> {
+                    LibraryScreen(navController)
+                }
+                2->{
+                    NotifyScreen()
+                }
+                3 -> {
+                    ProfileScreen(navController)
+                }
+                4 -> {
+                    SettingScreen(navController)
+                }
+                else -> {
+                        Text(text = HomeScreenData.screens[bottomNavState].title)
+                    }
+                }
+        }
     }
 }
 
