@@ -7,15 +7,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ielstlearningapplication.data.remote.dto.ChatResponse
 import com.example.ielstlearningapplication.domain.usecase.aichat.AIChatUseCase
-import com.example.ielstlearningapplication.presentation.pages.AIChat.data.Message
 import com.example.ielstlearningapplication.presentation.pages.AIChat.models.AIChatUIState
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import javax.inject.Inject
+import Message
 
 //@HiltViewModel
 //class AIChatViewModel @Inject constructor(private val aichatUseCase: AIChatUseCase) : ViewModel() {

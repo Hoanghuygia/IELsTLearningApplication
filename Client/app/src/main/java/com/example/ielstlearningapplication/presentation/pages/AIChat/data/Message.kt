@@ -1,4 +1,4 @@
-package com.example.ielstlearningapplication.presentation.pages.AIChat.data
+//package com.example.ielstlearningapplication.presentation.pages.AIChat.data
 
 data class Message(
     val message: String,

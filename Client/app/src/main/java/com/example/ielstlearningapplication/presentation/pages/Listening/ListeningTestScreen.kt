@@ -51,7 +51,10 @@ import com.example.ielstlearningapplication.presentation.pages.Listening.compone
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ListeningTestScreen(navController: NavHostController) {
+fun ListeningTestScreen(
+    navController: NavHostController,
+    title: String // Thêm title làm tham số
+) {
     var selectedTab by remember { mutableStateOf(0) }
     val tabs = listOf("Practice", "Comment")
 
@@ -59,10 +62,7 @@ fun ListeningTestScreen(navController: NavHostController) {
         topBar = {
             TopAppBar(
                 title = {
-                    Text(
-                        "Cambridge IELTS 16 Academic \n" +
-                                "Listening - Test 1"
-                    )
+                    Text(title) // Sử dụng title từ tham số
                 },
                 navigationIcon = {
                     IconButton(onClick = { /* Handle back navigation */ }) {
@@ -97,5 +97,6 @@ fun ListeningTestScreen(navController: NavHostController) {
 @Composable
 fun ListeningTestScreenPreview() {
     val navController = rememberNavController()
-    ListeningTestScreen(navController)
+    val mockTitle = "Listening Test 1" // Giá trị từ JSON
+    ListeningTestScreen(navController, title = mockTitle)
 }
