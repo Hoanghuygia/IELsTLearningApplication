@@ -23,29 +23,82 @@ export class ChatsController {
         try {
             const { userId } = req.params;
             
-            const chats = await Chats.findOne({ 
-                userId: userId  // Không cần chuyển đổi ObjectId vì đã populate
-            })
-            .populate('userId')
-            .select("chats")
-            .exec();
+            const objectId = new mongoose.Types.ObjectId(userId);
+            
+            const userChats = await Chats.findOne({ userId: objectId })
+                .populate({
+                    path: 'userId',
+                    model: 'User',
+                    select: '-password'
+                });
     
-            if (!chats) {
+            if (!userChats) {
                 return res.status(404).json({
                     success: false,
-                    message: "Chats not found for the given user ID.",
+                    message: "No chats found for this user",
                 });
             }
     
             return res.status(200).json({
                 success: true,
-                data: chats.chats,
+                data: userChats,
             });
+    
         } catch (error) {
             console.error("Error fetching chats by userId:", error);
             return res.status(500).json({
-                success: false, 
+                success: false,
                 message: "An error occurred while fetching chats.",
+            });
+        }
+    };
+
+    createChat = async (req, res, next) => {
+        try {
+            const { userId } = req.body;
+
+            if (!userId) {
+                return res.status(400).json({
+                    success: false,
+                    message: "UserId is required"
+                });
+            }
+
+            const userObjectId = new mongoose.Types.ObjectId(userId);
+    
+            const newChat = {
+                userId: userObjectId,
+                chats: [
+                    {
+                        id: "chat" + Date.now(), // Tạo id unique
+                        label: "New Chat",
+                        messages: [
+                            {
+                                id: "msg1_" + Date.now(),
+                                entity: 0,
+                                content: "Hello! How can I help you today?",
+                                timestamp: new Date()
+                            }
+                        ]
+                    }
+                ]
+            };
+    
+            const chat = new Chats(newChat);
+            await chat.save();
+    
+            return res.status(201).json({
+                success: true,
+                message: "Chat created successfully",
+                data: chat
+            });
+    
+        } catch (error) {
+            console.error("Error creating chat:", error);
+            return res.status(500).json({
+                success: false,
+                message: "An error occurred while creating chat.",
+                error: error.message
             });
         }
     };
