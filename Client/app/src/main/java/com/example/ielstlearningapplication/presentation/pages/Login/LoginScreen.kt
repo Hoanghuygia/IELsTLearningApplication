@@ -33,16 +33,15 @@ import com.example.ielstlearningapplication.R
 import com.example.ielstlearningapplication.presentation.navGraph.Route
 import com.example.ielstlearningapplication.presentation.pages.Login.Components.InputField
 import com.example.ielstlearningapplication.presentation.pages.Login.Components.LoginPageButton
+import okhttp3.Route
 
 @Composable
-fun LoginScreen(navController: NavController,onEvent: () -> Unit) {
-    var checked by remember { mutableStateOf(false) }
-    var userGmail by remember { mutableStateOf("")}
-    var userPassword by remember { mutableStateOf("") }
+fun LoginScreen(navController: NavController, viewModel: LoginModel = LoginModel(), onFacebookLogin: () -> Unit = {},
+                onGoogleLogin: () -> Unit = {}) {
 
-    fun navigateSignUp() {
-        navController.navigate(Route.SignupScreen.route)
-    }
+    var userGmail by remember { mutableStateOf("") }
+    var userPassword by remember { mutableStateOf("") }
+    var errorMessage by remember { mutableStateOf<String?>(null) }
 
     Column(
         modifier = Modifier
@@ -53,8 +52,7 @@ fun LoginScreen(navController: NavController,onEvent: () -> Unit) {
             modifier = Modifier
                 .height(170.dp)
                 .padding(horizontal = 40.dp, vertical = 30.dp),
-
-        ){
+        ) {
             Text(
                 text = "Welcome to",
                 color = Color.White,
@@ -68,14 +66,12 @@ fun LoginScreen(navController: NavController,onEvent: () -> Unit) {
             )
         }
 
-        Column (
+        Column(
             modifier = Modifier
                 .height(265.dp)
-                .background(Color.White,
-                    shape = RoundedCornerShape(topStart = 50.dp, topEnd = 50.dp)
-                )
+                .background(Color.White, shape = RoundedCornerShape(topStart = 50.dp, topEnd = 50.dp))
                 .padding(horizontal = 40.dp, vertical = 10.dp),
-        ){
+        ) {
             Text(
                 text = "Login",
                 fontSize = 40.sp,
@@ -87,7 +83,7 @@ fun LoginScreen(navController: NavController,onEvent: () -> Unit) {
             InputField(
                 fieldValue = userGmail,
                 labelText = "Enter Your Email",
-                onReceiveInput = {userGmail = it}
+                onReceiveInput = { userGmail = it }
             )
 
             Spacer(modifier = Modifier.height(14.dp))
@@ -95,45 +91,20 @@ fun LoginScreen(navController: NavController,onEvent: () -> Unit) {
             InputField(
                 fieldValue = userPassword,
                 labelText = "Enter Your Password",
-                onReceiveInput = {userPassword = it}
+                onReceiveInput = { userPassword = it }
             )
 
             Spacer(modifier = Modifier.height(15.dp))
 
-            Row (
-                modifier = Modifier
-                    .height(43.dp)
-                    .fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                Checkbox(
-
-                    checked = checked,
-                    onCheckedChange = {checked = it}
-                )
+            errorMessage?.let {
                 Text(
-                    modifier = Modifier.weight(1f),
-                    text = "Remember me",
-                    fontSize = 15.sp,
-                    color = Color(0, 12, 20),
-                )
-
-                Text(
-                    text = "Forgot Password?",
-                    fontSize = 15.sp,
-                    color = Color(232,105,105),
-                    modifier = Modifier.clickable { /*todo*/ }
+                    text = it,
+                    color = Color.Red,
+                    fontSize = 14.sp,
+                    modifier = Modifier.padding(vertical = 8.dp)
                 )
             }
-        }
 
-        Column (
-            modifier = Modifier
-                .fillMaxSize()
-                .background(Color.White)
-                .padding(horizontal = 40.dp, vertical = 10.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ){
             LoginPageButton(
                 buttonColors = ButtonColors(
                     containerColor = Color(255, 215, 0),
@@ -142,10 +113,20 @@ fun LoginScreen(navController: NavController,onEvent: () -> Unit) {
                     disabledContentColor = Color(0, 33, 71)
                 ),
                 buttonContent = "Login",
-                onButtonClick = onEvent,
+                onButtonClick = {
+                    viewModel.signIn(
+                        email = userGmail,
+                        password = userPassword,
+                        onSuccess = {
+                            navController.navigate(Route.HomeScreen.route)
+                        },
+                        onError = { error ->
+                            errorMessage = error
+                        }
+                    )
+                },
                 icon = null
             )
-
             Spacer(modifier = Modifier.height(20.dp))
 
             Text(
@@ -165,7 +146,7 @@ fun LoginScreen(navController: NavController,onEvent: () -> Unit) {
                     disabledContentColor = Color(230, 230, 230)),
                 buttonContent = "Continue with Facebook",
                 icon = R.drawable.facebook_logo,
-                onButtonClick = onEvent
+                onButtonClick = onFacebookLogin
             )
 
             Spacer(modifier = Modifier.height(15.dp))
@@ -179,7 +160,7 @@ fun LoginScreen(navController: NavController,onEvent: () -> Unit) {
                 ),
                 buttonContent = "Continue with Google",
                 icon = R.drawable.google_logo,
-                onButtonClick = onEvent
+                onButtonClick = onGoogleLogin
             )
 
             Spacer(modifier = Modifier.height(30.dp))
@@ -192,7 +173,9 @@ fun LoginScreen(navController: NavController,onEvent: () -> Unit) {
                 )
 
                 Text(
-                    modifier = Modifier.clickable(onClick = ::navigateSignUp),
+                    modifier = Modifier.clickable {
+                        navController.navigate(Route.SignupScreen.route)
+                    },
                     text = "Sign up",
                     fontSize = 16.sp,
                     color = Color(24, 119, 242)
@@ -202,14 +185,16 @@ fun LoginScreen(navController: NavController,onEvent: () -> Unit) {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun LoginScreenReview() {
-    IELsTLearningApplicationTheme {
-        val navController = rememberNavController()
-        LoginScreen(navController,{})
-    }
-}
+
+
+//@Preview(showBackground = true)
+//@Composable
+//fun LoginScreenReview() {
+//    IELsTLearningApplicationTheme {
+//        val navController = rememberNavController()
+//        LoginScreen(navController,{})
+//    }
+//}
 
 
 

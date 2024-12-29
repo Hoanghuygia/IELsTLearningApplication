@@ -43,33 +43,29 @@ import com.example.ielstlearningapplication.presentation.navGraph.Route
 import com.example.ielstlearningapplication.presentation.pages.Login.LoginScreen
 
 @Composable
-fun SignUpScreen(navController: NavController, onEvent : () -> Unit) {
+fun SignUpScreen(navController: NavController,  viewModel: SignUpModel = SignUpModel()) {
     var userName by remember { mutableStateOf("") }
     var userGmail by remember { mutableStateOf("") }
     var userPhone by remember { mutableStateOf("") }
     var userPassword by remember { mutableStateOf("") }
 
-    fun navigateLogin() {
-        navController.navigate(Route.LoginScreen.route)
-    }
+    var errorMessage by remember { mutableStateOf<String?>(null) }
 
 
-    Column (
+    Column(
         modifier = Modifier
             .fillMaxSize()
             .background(color = Color(0, 33, 71)),
-    ){
-        Column (
+    ) {
+        Column(
             modifier = Modifier.height(40.dp)
-        ){}
+        ) {}
         Column(
             modifier = Modifier
                 .height(385.dp)
-                .background(Color.White,
-                    shape = RoundedCornerShape(topStart = 50.dp, topEnd = 50.dp)
-                )
+                .background(Color.White, shape = RoundedCornerShape(topStart = 50.dp, topEnd = 50.dp))
                 .padding(horizontal = 40.dp, vertical = 15.dp),
-        ){
+        ) {
             Text(
                 text = "Sign up",
                 fontSize = 40.sp,
@@ -81,14 +77,11 @@ fun SignUpScreen(navController: NavController, onEvent : () -> Unit) {
             OutlinedTextField(
                 modifier = Modifier
                     .width(312.dp)
-                    .height(55.dp)
-                ,
+                    .height(55.dp),
                 textStyle = TextStyle.Default.copy(fontSize = 16.sp),
                 value = userName,
-                onValueChange = {userName = it},
-                label = {
-                    Text(text="Enter Your Email")
-                }
+                onValueChange = { userName = it },
+                label = { Text(text = "Enter Your Name") }
             )
 
             Spacer(modifier = Modifier.height(24.dp))
@@ -96,14 +89,11 @@ fun SignUpScreen(navController: NavController, onEvent : () -> Unit) {
             OutlinedTextField(
                 modifier = Modifier
                     .width(312.dp)
-                    .height(55.dp)
-                ,
+                    .height(55.dp),
                 textStyle = TextStyle.Default.copy(fontSize = 16.sp),
                 value = userGmail,
-                onValueChange = {userGmail = it},
-                label = {
-                    Text(text="Enter Your Email")
-                }
+                onValueChange = { userGmail = it },
+                label = { Text(text = "Enter Your Email") }
             )
 
             Spacer(modifier = Modifier.height(24.dp))
@@ -111,14 +101,11 @@ fun SignUpScreen(navController: NavController, onEvent : () -> Unit) {
             OutlinedTextField(
                 modifier = Modifier
                     .width(312.dp)
-                    .height(55.dp)
-                ,
+                    .height(55.dp),
                 textStyle = TextStyle.Default.copy(fontSize = 16.sp),
                 value = userPhone,
-                onValueChange = {userPhone = it},
-                label = {
-                    Text(text="Enter Your Email")
-                }
+                onValueChange = { userPhone = it },
+                label = { Text(text = "Enter Your Phone") }
             )
 
             Spacer(modifier = Modifier.height(24.dp))
@@ -126,35 +113,52 @@ fun SignUpScreen(navController: NavController, onEvent : () -> Unit) {
             OutlinedTextField(
                 modifier = Modifier
                     .width(312.dp)
-                    .height(55.dp)
-                ,
+                    .height(55.dp),
                 textStyle = TextStyle.Default.copy(fontSize = 16.sp),
                 value = userPassword,
-                onValueChange = {userPassword = it},
-                label = {
-                    Text(text="Enter Your Email")
-                }
+                onValueChange = { userPassword = it },
+                label = { Text(text = "Enter Your Password") },
+                singleLine = true
             )
         }
 
-        Column (
+        if (errorMessage != null) {
+            Text(
+                text = errorMessage ?: "",
+                color = Color.Red,
+                modifier = Modifier.padding(horizontal = 40.dp, vertical = 8.dp)
+            )
+        }
+
+        Column(
             modifier = Modifier
                 .fillMaxSize()
                 .background(Color.White)
                 .padding(horizontal = 40.dp, vertical = 25.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
-        ){
+        ) {
             Button(
                 modifier = Modifier
                     .height(48.dp)
                     .width(312.dp),
-                onClick = onEvent,
+                onClick = {
+                    viewModel.signUp(
+                        email = userGmail,
+                        password = userPassword,
+                        onSuccess = {
+                            navController.navigate(Route.LoginScreen.route)
+                        },
+                        onError = { error ->
+                            errorMessage = error
+                        }
+                    )
+                },
                 colors = ButtonColors(
-                    containerColor = Color(255, 215, 0),
-                    contentColor = Color(0, 33, 71),
-                    disabledContainerColor = Color(255, 215, 0),
-                    disabledContentColor = Color(0, 33, 71)
-                )
+                    containerColor = Color(235,235,235),
+                    contentColor = Color.Black.copy(alpha = 0.6f),
+                    disabledContainerColor = Color(235,235,235),
+                    disabledContentColor = Color.Black.copy(alpha = 0.6f)
+                ),
             ) {
                 Text(
                     text = "Sign up",
@@ -172,57 +176,7 @@ fun SignUpScreen(navController: NavController, onEvent : () -> Unit) {
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            Button(
-                modifier = Modifier
-                    .height(48.dp)
-                    .width(312.dp),
-                onClick = onEvent,
-                colors = ButtonColors(
-                    containerColor = Color(24, 119, 242),
-                    contentColor = Color(230, 230, 230),
-                    disabledContainerColor = Color(24, 119, 242),
-                    disabledContentColor = Color(230, 230, 230)
-                ),
-            ) {
-                Image(
-                    modifier = Modifier
-                        .size(26.dp)
-                    ,
-                    painter = painterResource(id = R.drawable.facebook_logo),
-                    contentDescription = "Facebook logo"
-                )
-                Text(
-                    modifier = Modifier.padding(horizontal = 30.dp),
-                    text = "Continue with Facebook",
-                )
-            }
-
-            Spacer(modifier = Modifier.height(15.dp))
-
-            Button(
-                modifier = Modifier
-                    .height(48.dp)
-                    .width(312.dp),
-                onClick = onEvent,
-                colors = ButtonColors(
-                    containerColor = Color(235,235,235),
-                    contentColor = Color.Black.copy(alpha = 0.6f),
-                    disabledContainerColor = Color(235,235,235),
-                    disabledContentColor = Color.Black.copy(alpha = 0.6f)
-                ),
-            ) {
-                Image(
-                    modifier = Modifier
-                        .size(26.dp)
-                    ,
-                    painter = painterResource(id = R.drawable.google_logo),
-                    contentDescription = "Facebook logo"
-                )
-                Text(
-                    modifier = Modifier.padding(horizontal = 30.dp),
-                    text = "Continue with Google",
-                )
-            }
+            // Facebook and Google buttons...
 
             Spacer(modifier = Modifier.height(30.dp))
 
@@ -234,7 +188,7 @@ fun SignUpScreen(navController: NavController, onEvent : () -> Unit) {
                 )
 
                 Text(
-                    modifier = Modifier.clickable (onClick = ::navigateLogin),
+                    modifier = Modifier.clickable { navController.navigate(Route.LoginScreen.route) },
                     text = "Sign in",
                     fontSize = 16.sp,
                     color = Color(24, 119, 242)
@@ -244,11 +198,12 @@ fun SignUpScreen(navController: NavController, onEvent : () -> Unit) {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun SignUpScreenReview() {
-    IELsTLearningApplicationTheme {
-        val navController = rememberNavController()
-        SignUpScreen(navController,{})
-    }
-}
+
+//@Preview(showBackground = true)
+//@Composable
+//fun SignUpScreenReview() {
+//    IELsTLearningApplicationTheme {
+//        val navController = rememberNavController()
+//        SignUpScreen(navController,{})
+//    }
+//}
