@@ -18,7 +18,9 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.ielstlearningapplication.presentation.navGraph.NavGraph
 import com.example.ielstlearningapplication.ui.theme.IELsTLearningApplicationTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private val viewModel by viewModels<MainViewModel>()
 

@@ -74,12 +74,12 @@ dependencies {
     implementation(libs.androidx.core.splashscreen)
 
     // Dagger Hilt
-    implementation("com.google.dagger:hilt-android:2.51.1")
-    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
+    implementation("com.google.dagger:hilt-android:2.51")
+    kapt("com.google.dagger:hilt-android-compiler:2.51")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
     // Navigation
-    val nav_version = "2.8.4"
-    implementation("androidx.navigation:navigation-compose:$nav_version")
+    implementation("androidx.navigation:navigation-compose:2.8.4")
 
     // Icon
     implementation("androidx.compose.material:material-icons-extended:1.1.0")
