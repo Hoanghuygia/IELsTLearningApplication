@@ -12,8 +12,10 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 //import com.example.ielstlearningapplication.presentation.pages.AIChat.data.DataChat
-import com.example.ielstlearningapplication.presentation.pages.AIChat.data.Message
+//import com.example.ielstlearningapplication.presentation.pages.AIChat.data.Message
 import com.example.ielstlearningapplication.ui.theme.IELsTLearningApplicationTheme
+import com.example.ielstlearningapplication.domain.models.Message
+
 
 @Composable
 fun Messages(messages: List<Message>, modifier: Modifier) {

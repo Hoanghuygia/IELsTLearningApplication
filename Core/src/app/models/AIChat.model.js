@@ -32,7 +32,7 @@ const chatsSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: "User",
         },
-        chats: chatSchema,
+        chats: [chatSchema]
     },
     {
         collection: "chats",

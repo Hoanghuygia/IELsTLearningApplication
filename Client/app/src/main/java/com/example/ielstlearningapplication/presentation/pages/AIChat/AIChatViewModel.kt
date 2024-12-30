@@ -33,16 +33,49 @@ class AIChatViewModel @Inject constructor(
 //        }
 //    }
 
+//    fun getMessages(id: String) {
+//        viewModelScope.launch {
+//            try {
+//                val response = aichatUseCase.getMessage(id)
+//                Log.d("getMessages", "Response: $response")
+//                _uiState.update { currentState ->
+//                    currentState.copy(
+//                        messages = response.data.chats.messages,
+////                        isLoading = false
+//                    )
+//                }
+//            } catch (e: Exception) {
+//                _uiState.update { currentState ->
+//                    currentState.copy(
+//                        error = e.message ?: "Unknown error",
+//                        isLoading = false
+//                    )
+//                }
+//                e.printStackTrace()
+//            }
+//        }
+//    }
+
     fun getMessages(id: String) {
         viewModelScope.launch {
             try {
                 val response = aichatUseCase.getMessage(id)
                 Log.d("getMessages", "Response: $response")
-                _uiState.update { currentState ->
-                    currentState.copy(
-//                        messages = response.data.chats.messages,
-//                        isLoading = false
-                    )
+
+                response.onSuccess { chatResponse ->
+                    _uiState.update { currentState ->
+                        currentState.copy(
+                            messages = chatResponse.data.chats.messages,
+                            isLoading = false
+                        )
+                    }
+                }.onFailure { exception ->
+                    _uiState.update { currentState ->
+                        currentState.copy(
+                            error = exception.message ?: "Unknown error",
+                            isLoading = false
+                        )
+                    }
                 }
             } catch (e: Exception) {
                 _uiState.update { currentState ->

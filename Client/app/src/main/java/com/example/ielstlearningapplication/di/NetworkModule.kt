@@ -16,7 +16,9 @@ object NetworkModule {
     @Singleton
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:5000/") // Sử dụng 10.0.2.2 cho emulator
+//            .baseUrl("http://10.0.2.2:5000/")
+//            .baseUrl("http://192.168.2.56:5000")
+            .baseUrl("http://192.168.88.122:5000")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
