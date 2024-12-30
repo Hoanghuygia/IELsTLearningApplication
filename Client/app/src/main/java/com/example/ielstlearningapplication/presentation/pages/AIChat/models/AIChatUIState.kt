@@ -8,6 +8,8 @@ data class AIChatUIState(
     var valueTextField: String = "",
 //    var currentChat: List<Message> = DataChat.aMessage,
     var messages: List<Message> = emptyList<Message>(),
+    var currentChat: Int = 0,
+    var chatLabel: String = "",
     var isLoading: Boolean = false,
     var error: String = "No Error"
 )

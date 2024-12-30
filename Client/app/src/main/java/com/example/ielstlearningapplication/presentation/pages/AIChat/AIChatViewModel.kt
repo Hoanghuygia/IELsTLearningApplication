@@ -25,37 +25,6 @@ class AIChatViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(AIChatUIState())
     val uiState: StateFlow<AIChatUIState> = _uiState.asStateFlow()
 
-//    var messages = viewModelScope.launch {
-//        try {
-//            val response = aichatUseCase.getMessage("673f74a018bae505241f5981")
-//        } catch (e: Exception) {
-//            e.printStackTrace()
-//        }
-//    }
-
-//    fun getMessages(id: String) {
-//        viewModelScope.launch {
-//            try {
-//                val response = aichatUseCase.getMessage(id)
-//                Log.d("getMessages", "Response: $response")
-//                _uiState.update { currentState ->
-//                    currentState.copy(
-//                        messages = response.data.chats.messages,
-////                        isLoading = false
-//                    )
-//                }
-//            } catch (e: Exception) {
-//                _uiState.update { currentState ->
-//                    currentState.copy(
-//                        error = e.message ?: "Unknown error",
-//                        isLoading = false
-//                    )
-//                }
-//                e.printStackTrace()
-//            }
-//        }
-//    }
-
     fun getMessages(id: String) {
         viewModelScope.launch {
             try {
@@ -65,8 +34,9 @@ class AIChatViewModel @Inject constructor(
                 response.onSuccess { chatResponse ->
                     _uiState.update { currentState ->
                         currentState.copy(
-                            messages = chatResponse.data.chats.messages,
-                            isLoading = false
+                            messages = chatResponse.data.chats[currentState.currentChat].messages,
+                            isLoading = false,
+                            chatLabel = chatResponse.data.chats[currentState.currentChat].label
                         )
                     }
                 }.onFailure { exception ->
@@ -89,29 +59,50 @@ class AIChatViewModel @Inject constructor(
         }
     }
 
-//    fun updateCurrentChat(newMessage: String) {
-//        _uiState.update { currentState ->
-//            currentState.copy(
-//                currentChat = currentState.currentChat + Message(
-//                    message = newMessage,
-//                    time = "12:33",
-//                    entity = 1
-//                )
-//            )
-//        }
-//    }
-//
-//    fun clearEnterTextField() {
-//        _uiState.update { currentState ->
-//            currentState.copy(valueTextField = "")
-//        }
-//    }
-//
-//    fun updateEnterTextField(enterTextFieldValue: String) {
-//        _uiState.update { currentState ->
-//            currentState.copy(
-//                valueTextField = enterTextFieldValue,
-//            )
-//        }
-//    }
+    fun updateCurrentChat(newMessage: String) {
+        _uiState.update { currentState ->
+            currentState.copy(
+                messages = currentState.messages + Message(
+                    content = newMessage,
+                    entity = 1,
+                    timestamp = "12:33",
+                )
+            )
+        }
+    }
+
+    fun sendMessage(content: String, userId: String, chatId: String) {
+        viewModelScope.launch {
+            try {
+                aichatUseCase.sendMessage(content, userId, chatId)
+                    .onSuccess { response ->
+                    }
+                    .onFailure { exception ->
+                        _uiState.update { it.copy(
+                            error = exception.message ?: "Failed to send message"
+                        ) }
+                    }
+            } catch (e: Exception) {
+                _uiState.update { it.copy(
+                    error = e.message ?: "Unknown error occurred"
+                ) }
+            }
+        }
+    }
+
+
+
+    fun clearEnterTextField() {
+        _uiState.update { currentState ->
+            currentState.copy(valueTextField = "")
+        }
+    }
+
+    fun updateEnterTextField(enterTextFieldValue: String) {
+        _uiState.update { currentState ->
+            currentState.copy(
+                valueTextField = enterTextFieldValue,
+            )
+        }
+    }
 }

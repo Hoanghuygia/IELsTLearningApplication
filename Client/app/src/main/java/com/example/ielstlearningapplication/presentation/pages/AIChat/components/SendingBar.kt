@@ -56,8 +56,7 @@ fun SendingBar(uiState: AIChatUIState, viewModel: AIChatViewModel ,modifier: Mod
         ) {
             TextField(
                 value = uiState.valueTextField,
-//                onValueChange = { viewModel.updateEnterTextField(it) },
-                onValueChange = {  },
+                onValueChange = { viewModel.updateEnterTextField(it) },
                 modifier = Modifier
                     .weight(1f)
                     .padding(8.dp),
@@ -75,8 +74,9 @@ fun SendingBar(uiState: AIChatUIState, viewModel: AIChatViewModel ,modifier: Mod
                 ),
                 trailingIcon = {
                     IconButton(onClick = {
-//                        viewModel.updateCurrentChat(uiState.valueTextField)
-//                        viewModel.clearEnterTextField()
+                        viewModel.updateCurrentChat(uiState.valueTextField)
+                        viewModel.sendMessage(uiState.valueTextField, "673f74a018bae505241f5981",uiState.currentChat.toString())
+                        viewModel.clearEnterTextField()//I want to go home but bosch is my second home I love bosch so much
                     }) {
                         Icon(Icons.Filled.ArrowOutward, contentDescription = "Next")
                     }

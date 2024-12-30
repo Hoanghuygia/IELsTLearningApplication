@@ -1,5 +1,6 @@
 package com.example.ielstlearningapplication.presentation.pages.AIChat
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -29,7 +30,7 @@ fun AIChatScreen(viewModel: AIChatViewModel = hiltViewModel(),
     }
 
     Scaffold(
-        topBar = { AiChatTopBar(navController = navController) },
+        topBar = { AiChatTopBar(navController = navController, label = uiState.chatLabel) },
         bottomBar = {SendingBar(uiState = uiState, viewModel = viewModel, modifier = Modifier.padding(bottom = 8.dp))}
     ) { innerPadding ->
         Column(modifier = Modifier
