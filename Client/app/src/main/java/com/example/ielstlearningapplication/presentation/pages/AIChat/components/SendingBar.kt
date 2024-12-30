@@ -76,7 +76,7 @@ fun SendingBar(uiState: AIChatUIState, viewModel: AIChatViewModel ,modifier: Mod
                     IconButton(onClick = {
                         viewModel.updateCurrentChat(uiState.valueTextField)
                         viewModel.sendMessage(uiState.valueTextField, "673f74a018bae505241f5981",uiState.currentChat.toString())
-                        viewModel.clearEnterTextField()//I want to go home but bosch is my second home I love bosch so much
+                        viewModel.clearEnterTextField()
                     }) {
                         Icon(Icons.Filled.ArrowOutward, contentDescription = "Next")
                     }
