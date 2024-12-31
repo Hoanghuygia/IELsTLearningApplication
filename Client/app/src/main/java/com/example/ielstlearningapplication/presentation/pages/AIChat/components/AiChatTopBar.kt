@@ -19,9 +19,9 @@ import androidx.navigation.NavController
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AiChatTopBar(navController: NavController, modifier: Modifier = Modifier) {
+fun AiChatTopBar(navController: NavController, label: String, modifier: Modifier = Modifier) {
     TopAppBar(
-        title = { Text(text = "AI Chat about something") },
+        title = { Text(text = label) },
         colors = TopAppBarDefaults.mediumTopAppBarColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
         navigationIcon = {
             IconButton(onClick = {navController.popBackStack()}) {

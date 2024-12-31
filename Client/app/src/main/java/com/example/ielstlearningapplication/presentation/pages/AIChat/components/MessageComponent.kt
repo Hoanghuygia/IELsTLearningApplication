@@ -1,10 +1,6 @@
 package com.example.ielstlearningapplication.presentation.pages.AIChat.components
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -18,7 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.ielstlearningapplication.presentation.pages.AIChat.data.Message
+import com.example.ielstlearningapplication.domain.models.Message
 import com.example.ielstlearningapplication.ui.theme.IELsTLearningApplicationTheme
 
 @Composable
@@ -37,9 +33,9 @@ fun MessageComponent(message: Message, modifier: Modifier = Modifier) {
             .wrapContentSize()
     ) {
         Column(modifier.padding(top = 12.dp, start = 18.dp, end = 18.dp)) {
-            Text(text = message.message)
+            Text(text = message.content)
             Text(
-                text = message.time,
+                text = message.timestamp,
                 color = Color.Gray,
                 style = MaterialTheme.typography.displaySmall.copy(fontSize = 12.sp)
             )
@@ -51,6 +47,6 @@ fun MessageComponent(message: Message, modifier: Modifier = Modifier) {
 @Composable
 fun PreviewMessage() {
     IELsTLearningApplicationTheme {
-        MessageComponent(Message(message = "ABC ILOV U", time = "1:29", entity = 0))
+        MessageComponent(Message(content = "ABC ILOV U", timestamp = "1:29", entity = 0))
     }
 }
