@@ -3,6 +3,7 @@ package com.example.ielstlearningapplication.data.remote
 import com.example.ielstlearningapplication.data.remote.dto.ChatResponseNew
 import com.example.ielstlearningapplication.data.remote.dto.SendMessageRequest
 import com.example.ielstlearningapplication.data.remote.dto.SendMessageResponse
+import com.example.ielstlearningapplication.data.remote.dto.SendMessageToGeminiReQuest
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -14,4 +15,7 @@ interface ChatApi {
 
     @POST("aichat/sendMessage")
     suspend fun sendMessage(@Body request: SendMessageRequest): SendMessageResponse
+
+    @POST("aichat/chatGPT")
+    suspend fun sendMessageToGemini(@Body reQuest: SendMessageToGeminiReQuest): SendMessageResponse
 }

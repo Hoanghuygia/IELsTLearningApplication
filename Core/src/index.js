@@ -1,11 +1,16 @@
 import express from 'express';
 import morgan from 'morgan';
-import { config } from 'dotenv';
 import { connectMongooseCloud } from './config/db/index.js';
 import helmet from 'helmet';
 import cors from 'cors'
 import {route} from './routes/index.js'
 import { handleError } from './helper/handleError.js';
+import dotenv from 'dotenv';
+dotenv.config();
+// import { config } from 'dotenv';
+// config()
+
+console.log('OPENAI_API_KEY:', process.env.OPEN_AI_KEY ? 'Set' : 'Not set');
 
 const app = express();
 
@@ -21,7 +26,6 @@ app.use(cors());
 
 route(app)
 handleError(app)
-config();
 
 connectMongooseCloud();
 
