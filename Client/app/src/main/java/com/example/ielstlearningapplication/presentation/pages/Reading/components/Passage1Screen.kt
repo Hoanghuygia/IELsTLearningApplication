@@ -1,4 +1,3 @@
-//package com.example.ielstlearningapplication.presentation.pages.Reading.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer

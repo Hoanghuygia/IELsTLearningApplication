@@ -18,29 +18,26 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.example.ielstlearningapplication.presentation.pages.Reading.components.CommentScreen
 import com.example.ielstlearningapplication.presentation.pages.Reading.components.PracticeScreen
+import com.example.ielstlearningapplication.presentation.pages.Reading.data.FakeTestScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ReadingTestScreen(navController: NavHostController) {
+fun ReadingTestScreen(navController: NavHostController, testScreen: FakeTestScreen) {
     var selectedTab by remember { mutableStateOf(0) }
     val tabs = listOf("Practice", "Comment")
+
 
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(
-                        "Cambridge IELTS 16 Academic \n" +
-                                "Reading - Test 1"
-                    )
+                    Text(text = "${testScreen.title}")
                 },
                 navigationIcon = {
-                    IconButton(onClick = { /* Handle back navigation */ }) {
+                    IconButton(onClick = { navController.popBackStack()}) {
                         Icon(
                             Icons.Default.ArrowBack,
                             contentDescription = "Back"
@@ -68,9 +65,9 @@ fun ReadingTestScreen(navController: NavHostController) {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun ReadingTestScreenPreview() {
-    val navController = rememberNavController()
-    ReadingTestScreen(navController)
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun ReadingTestScreenPreview() {
+//    val navController = rememberNavController()
+//    ReadingTestScreen(navController)
+//}

@@ -1,7 +1,5 @@
 package com.example.ielstlearningapplication.presentation.pages.Reading
 
-//package com.example.buildprojectwithcompose
-
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons

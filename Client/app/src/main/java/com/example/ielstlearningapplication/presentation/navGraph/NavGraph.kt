@@ -6,7 +6,6 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.compose.composable
 import com.example.buildprojectwithcompose.ListeningTestScreen
 import com.example.buildprojectwithcompose.ReadingDoingTestScreen
-//import com.example.buildprojectwithcompose.ReadingAnswerScreen
 import com.example.buildprojectwithcompose.ReadingTestScreen
 import com.example.ielstlearningapplication.presentation.pages.AIChat.AIChatScreen
 import com.example.ielstlearningapplication.presentation.pages.ChangePassword.ChangePasswordScreen
@@ -23,6 +22,7 @@ import com.example.ielstlearningapplication.presentation.pages.Reading.ReadingAn
 import com.example.ielstlearningapplication.presentation.pages.ProfileChange.ProfileChangeScreen
 import com.example.ielstlearningapplication.presentation.pages.Writing.WritingScreen
 import com.example.ielstlearningapplication.presentation.pages.Reading.ReadingScreen
+import com.example.ielstlearningapplication.presentation.pages.Reading.data.TestScreenRepository
 import com.example.ielstlearningapplication.presentation.pages.Setting.SettingScreen
 import com.example.ielstlearningapplication.presentation.pages.SignUp.SignUpScreen
 import com.example.ielstlearningapplication.presentation.pages.Speaking.SpeakingScreen
@@ -30,12 +30,10 @@ import com.example.ielstlearningapplication.presentation.pages.Speaking.Speaking
 import com.example.ielstlearningapplication.presentation.pages.Speaking.LessonScreen
 
 
-
-
 @Composable
 fun NavGraph(startDestination: String) {
     val navController = rememberNavController()
-
+    val repository = TestScreenRepository()
     NavHost(navController = navController, startDestination = startDestination) {
         composable(route = Route.LoginScreen.route) {
             LoginScreen(
@@ -119,9 +117,9 @@ fun NavGraph(startDestination: String) {
 //            NotifyScreen()
 //        }
         //-----------Reading-------------------------------------------------------
-        composable(route = Route.ReadingTestScreen.route) {
-            ReadingTestScreen(navController = navController)
-        }
+//        composable(route = Route.ReadingTestScreen.route) {
+//            ReadingTestScreen(navController = navController, sharedViewModel = sharedViewModel)
+//        }
         composable(route = Route.ReadingDoingTestScreen.route) {
             ReadingDoingTestScreen(navController = navController)
         }
@@ -149,5 +147,17 @@ fun NavGraph(startDestination: String) {
             LessonScreen(navController = navController)
         }
 
+
+
+        composable("readingTestScreen/{lessonId}") { backStackEntry ->
+            val lessonId = backStackEntry.arguments?.getString("lessonId")
+            val testScreen = repository.getTestScreenById(lessonId)
+            if (testScreen != null) {
+                ReadingTestScreen(navController, testScreen)
+            }
+        }
+
+
     }
+
 }

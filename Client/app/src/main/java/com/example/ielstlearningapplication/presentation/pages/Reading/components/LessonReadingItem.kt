@@ -1,5 +1,6 @@
 package com.example.ielstlearningapplication.presentation.pages.Reading.components
 
+import FakeLesson
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
@@ -16,13 +17,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.example.ielstlearningapplication.presentation.pages.HomePage.data.FakeLesson
 
 @Composable
-fun LessonReadingItem (lesson: FakeLesson, navController: NavHostController){
+fun LessonReadingItem(lesson: FakeLesson, navController: NavHostController) {
     Row(
         modifier = Modifier
-            .clickable { navController.navigate("onReadingTestScreen")  }
+            .clickable {
+                navController.navigate("readingTestScreen/${lesson.id}")
+            }
             .padding(8.dp)
     ) {
         Image(
@@ -39,3 +41,4 @@ fun LessonReadingItem (lesson: FakeLesson, navController: NavHostController){
         )
     }
 }
+

@@ -4,6 +4,9 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id ("kotlin-parcelize")
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.9.10"
+
 }
 
 android {
@@ -42,6 +45,10 @@ android {
 }
 
 dependencies {
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
+    implementation ("androidx.core:core-ktx:1.7.0")
+    implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
+    implementation("org.jetbrains.kotlin:kotlin-parcelize-runtime:1.4.32")
     implementation("androidx.compose.material:material-icons-core:1.1.0")
     implementation("androidx.compose.material:material-icons-extended:1.1.0")
     implementation("androidx.compose.ui:ui:1.1.0")
@@ -53,6 +60,7 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("io.coil-kt:coil-compose:2.2.2")
     implementation("androidx.room:room-runtime:2.5.1")
+    implementation("androidx.compose.runtime:runtime-livedata:1.7.6")
     kapt("androidx.room:room-compiler:2.5.1")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
