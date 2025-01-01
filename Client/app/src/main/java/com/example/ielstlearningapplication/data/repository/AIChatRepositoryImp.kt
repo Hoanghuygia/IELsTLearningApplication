@@ -6,6 +6,7 @@ import com.example.ielstlearningapplication.data.remote.dto.ChatResponseNew
 import com.example.ielstlearningapplication.data.remote.dto.SendMessageRequest
 import com.example.ielstlearningapplication.data.remote.dto.SendMessageResponse
 import com.example.ielstlearningapplication.data.remote.dto.SendMessageToGeminiReQuest
+import com.example.ielstlearningapplication.data.remote.dto.SendMessageToGeminiResponse
 import com.example.ielstlearningapplication.domain.repository.AIChatRepository
 import javax.inject.Inject
 
@@ -28,9 +29,9 @@ class AIChatRepositoryImp @Inject constructor(
         }
     }
 
-    override suspend fun sendMessageToGemini(reQuest: SendMessageToGeminiReQuest): Result<SendMessageResponse>{
+    override suspend fun sendMessageToGemini(request: SendMessageToGeminiReQuest): Result<SendMessageToGeminiResponse>{
         return try {
-            Result.success((chatService.sendMessageToGemini(reQuest)))
+            Result.success((chatService.sendMessageToGemini(request)))
         }catch (e: Exception){
             Result.failure(e)
         }

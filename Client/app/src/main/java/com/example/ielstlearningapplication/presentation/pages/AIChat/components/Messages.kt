@@ -29,7 +29,7 @@ fun Messages(messages: List<Message>, modifier: Modifier) {
         items(messages) { message ->
             Row(
                 modifier = Modifier.fillMaxWidth(), horizontalArrangement =
-                if (message.entity == 0) {
+                if (message.entity == 0) { // 0 is AI, 1 is user
                     Arrangement.Start
                 } else {
                     Arrangement.End
