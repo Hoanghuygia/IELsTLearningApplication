@@ -3,7 +3,7 @@ import { Schema } from "mongoose";
 import Content from "./Content.model.js";
 
 const readingSchema = new Schema({
-    label: {
+    name: {
         type: String,
         required: true,
     },

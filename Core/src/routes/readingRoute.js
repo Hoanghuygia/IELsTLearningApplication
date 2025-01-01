@@ -6,5 +6,6 @@ const router = Router()
 const readingController = new ReadingController();
 
 router.get('/', readingController.getAllReading);
+router.get('/:readingId', readingController.getReadingById)
 
 export {router as readingRoute}
