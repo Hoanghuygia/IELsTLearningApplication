@@ -16,6 +16,7 @@ import com.example.ielstlearningapplication.presentation.pages.Library.LibrarySc
 import com.example.ielstlearningapplication.presentation.pages.Listening.ListeningDoingTestScreen
 import com.example.ielstlearningapplication.presentation.pages.Listening.ListeningScreen
 import com.example.ielstlearningapplication.presentation.pages.Listening.ListeningAnswerScreen
+import com.example.ielstlearningapplication.presentation.pages.Login.LoginModel
 import com.example.ielstlearningapplication.presentation.pages.Login.LoginScreen
 import com.example.ielstlearningapplication.presentation.pages.Notify.NotifyScreen
 import com.example.ielstlearningapplication.presentation.pages.Profile.ProfileScreen
@@ -24,6 +25,7 @@ import com.example.ielstlearningapplication.presentation.pages.ProfileChange.Pro
 import com.example.ielstlearningapplication.presentation.pages.Writing.WritingScreen
 import com.example.ielstlearningapplication.presentation.pages.Reading.ReadingScreen
 import com.example.ielstlearningapplication.presentation.pages.Setting.SettingScreen
+import com.example.ielstlearningapplication.presentation.pages.SignUp.SignUpModel
 import com.example.ielstlearningapplication.presentation.pages.SignUp.SignUpScreen
 import com.example.ielstlearningapplication.presentation.pages.Speaking.SpeakingScreen
 import com.example.ielstlearningapplication.presentation.pages.Speaking.SpeakingResultScreen
@@ -37,21 +39,37 @@ fun NavGraph(startDestination: String) {
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = startDestination) {
+//        composable(route = Route.LoginScreen.route) {
+//            LoginScreen(
+//                navController = navController,
+//                onEvent = {
+//                    navController.navigate(Route.HomeScreen.route)
+//                }
+//            )
+//        }
+
         composable(route = Route.LoginScreen.route) {
+            val viewModel = LoginModel()
             LoginScreen(
                 navController = navController,
-                onEvent = {
-                    navController.navigate(Route.HomeScreen.route)
-                }
+                viewModel = viewModel
             )
         }
 
+//        composable(route = Route.SignupScreen.route) {
+//            SignUpScreen(
+//                navController = navController,
+//                onEvent = {
+//                    navController.navigate(Route.LoginScreen.route)
+//                }
+//            )
+//        }
+
         composable(route = Route.SignupScreen.route) {
+            val viewModel = SignUpModel()
             SignUpScreen(
                 navController = navController,
-                onEvent = {
-                    navController.navigate(Route.HomeScreen.route)
-                }
+                viewModel = viewModel
             )
         }
 

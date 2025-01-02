@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -90,6 +91,10 @@ dependencies {
     implementation ("androidx.activity:activity-ktx:1.8.0-alpha03")
     implementation ("androidx.appcompat:appcompat:1.6.1")
     implementation ("androidx.core:core-ktx:1.9.0")
+
+    // Firebase
+    implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
+    implementation("com.google.firebase:firebase-auth")
 }
 
 kapt {

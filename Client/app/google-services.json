@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "940487332711",
+    "project_id": "final-project-kotlin-aaceb",
+    "storage_bucket": "final-project-kotlin-aaceb.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:940487332711:android:abb1c75679ab5ef0b8d5c2",
+        "android_client_info": {
+          "package_name": "com.example.ielstlearningapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQLFA2MwcNz_JyT0DOu0Zx05D8Ms2JfqQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

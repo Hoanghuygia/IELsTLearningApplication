@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.example.ielstlearningapplication" />
+                  <option name="mobileSdkAppId" value="1:940487332711:android:abb1c75679ab5ef0b8d5c2" />
+                  <option name="projectId" value="final-project-kotlin-aaceb" />
+                  <option name="projectNumber" value="940487332711" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
