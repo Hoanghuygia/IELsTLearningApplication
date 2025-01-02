@@ -46,7 +46,6 @@ fun LoginScreen(navController: NavController,onEvent: () -> Unit) {
 
     Column(
         modifier = Modifier
-            .fillMaxSize()
             .background(color = Color(0, 33, 71)),
     ) {
         Column(
@@ -74,7 +73,7 @@ fun LoginScreen(navController: NavController,onEvent: () -> Unit) {
                 .background(Color.White,
                     shape = RoundedCornerShape(topStart = 50.dp, topEnd = 50.dp)
                 )
-                .padding(horizontal = 40.dp, vertical = 10.dp),
+                .padding(horizontal = 40.dp, vertical = 10.dp)
         ){
             Text(
                 text = "Login",
