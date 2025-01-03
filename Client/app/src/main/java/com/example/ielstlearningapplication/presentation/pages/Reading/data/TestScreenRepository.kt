@@ -1,24 +1,32 @@
 package com.example.ielstlearningapplication.presentation.pages.Reading.data
 
+import com.example.ielstlearningapplication.di.RetrofitInstance
+
+
 class TestScreenRepository {
 
-    private val testScreens = listOf(
-        FakeTestScreen(
-            id = "1",
-            title = "Cambridge IELTS 16 Academic Reading - Test 1",
-            id_practice = "123df12",
-            id_comment = "3332swff"
-        ),
-        FakeTestScreen(
-            id = "2",
-            title = "Cambridge IELTS 16 Academic Reading - Test 2",
-            id_practice = "3123df1",
-            id_comment = "53332swf"
-        ),
-        // Add other FakeTestScreen items here
-    )
+    suspend fun getTestScreenById(id: String?): FakeTestScreen? {
+        return if (id != null) {
+            try {
+                val response = RetrofitInstance.api.getReadingById(id)
+                val reading = response.reading
 
-    fun getTestScreenById(id: String?): FakeTestScreen? {
-        return testScreens.find { it.id == id }
+                val firstPassage = reading.content?.passages?.firstOrNull()
+                val numQuestions = firstPassage?.questionGroup?.sumOf { it.questions.size } ?: 0
+
+                FakeTestScreen(
+                    id = reading._id,
+                    title = reading.label,
+//                    title= numQuestions.toString(),
+                    id_content= reading.content._id,
+                    p1_num_question = numQuestions
+                )
+            } catch (e: Exception) {
+                e.printStackTrace()  // This will print the stack trace in Logcat
+                null
+            }
+        } else {
+            null
+        }
     }
 }

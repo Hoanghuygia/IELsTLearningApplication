@@ -29,7 +29,7 @@ fun ReadingScreen(navController: NavHostController) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         SearchBar(
-            onBackClick = { /* TODO: Xử lý sự kiện quay lại */ },
+            onBackClick = { navController.popBackStack() },
             onMoreClick = { /* TODO: Xử lý sự kiện cho nút More */ },
             searchQuery = "", // Bạn có thể điền giá trị mặc định hoặc lấy từ ViewModel
             onSearchQueryChange = { /* TODO: Xử lý sự thay đổi của ô tìm kiếm */ }

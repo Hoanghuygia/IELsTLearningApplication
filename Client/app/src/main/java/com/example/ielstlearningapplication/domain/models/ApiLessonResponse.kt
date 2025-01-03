@@ -1,6 +1,6 @@
 package com.example.ielstlearningapplication.domain.models
 
-data class ApiResponse(
+data class ApiLessonResponse(
     val message: String,
     val readings: List<ApiLesson>
 )

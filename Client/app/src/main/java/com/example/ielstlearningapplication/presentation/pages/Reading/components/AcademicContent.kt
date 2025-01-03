@@ -9,12 +9,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import com.example.ielstlearningapplication.data.manager.MyViewModel
+import com.example.ielstlearningapplication.data.manager.LessonScreenViewModel
 import com.example.ielstlearningapplication.presentation.pages.Reading.components.LessonReadingItem
 
 @Composable
-fun AcademicContent(navController: NavHostController, viewModel: MyViewModel = viewModel()) {
-    val lessons = viewModel.readings.observeAsState(initial = listOf())
+fun AcademicContent(navController: NavHostController, viewModel: LessonScreenViewModel = viewModel()) {
+    val lessons = viewModel.ac_readings.observeAsState(initial = listOf())
 
     LazyColumn(
         modifier = Modifier

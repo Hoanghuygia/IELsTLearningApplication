@@ -1,6 +1,13 @@
 package com.example.ielstlearningapplication.presentation.navGraph
 
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.compose.composable
@@ -22,6 +29,7 @@ import com.example.ielstlearningapplication.presentation.pages.Reading.ReadingAn
 import com.example.ielstlearningapplication.presentation.pages.ProfileChange.ProfileChangeScreen
 import com.example.ielstlearningapplication.presentation.pages.Writing.WritingScreen
 import com.example.ielstlearningapplication.presentation.pages.Reading.ReadingScreen
+import com.example.ielstlearningapplication.presentation.pages.Reading.data.FakeTestScreen
 import com.example.ielstlearningapplication.presentation.pages.Reading.data.TestScreenRepository
 import com.example.ielstlearningapplication.presentation.pages.Setting.SettingScreen
 import com.example.ielstlearningapplication.presentation.pages.SignUp.SignUpScreen
@@ -151,11 +159,19 @@ fun NavGraph(startDestination: String) {
 
         composable("readingTestScreen/{lessonId}") { backStackEntry ->
             val lessonId = backStackEntry.arguments?.getString("lessonId")
-            val testScreen = repository.getTestScreenById(lessonId)
+            var testScreen by remember { mutableStateOf<FakeTestScreen?>(null) }
+
+            LaunchedEffect(lessonId) {
+                testScreen = repository.getTestScreenById(lessonId)
+            }
+
             if (testScreen != null) {
-                ReadingTestScreen(navController, testScreen)
+                ReadingTestScreen(navController, testScreen!!.id)
+            } else {
+                Text(text = "Loading...", fontSize = 24.sp)
             }
         }
+
 
 
     }

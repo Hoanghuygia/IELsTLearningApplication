@@ -29,9 +29,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.example.ielstlearningapplication.presentation.pages.Reading.data.FakeTestScreen
 
 @Composable
-fun PracticeScreen(navController: NavHostController) {
+fun PracticeScreen(navController: NavHostController, testScreen: FakeTestScreen) {
     var selectedPassage1 by remember { mutableStateOf(false) }
     var selectedPassage2 by remember { mutableStateOf(false) }
     var selectedPassage3 by remember { mutableStateOf(false) }
@@ -65,7 +66,7 @@ fun PracticeScreen(navController: NavHostController) {
                         onCheckedChange = { selectedPassage1 = it }
                     )
                     Text(
-                        text = "Passage 1 (13 questions)",
+                        text = "Passage 1 (${testScreen.p1_num_question} questions)",
                         fontSize = 18.sp,
                         fontWeight = FontWeight.W400
                     )
