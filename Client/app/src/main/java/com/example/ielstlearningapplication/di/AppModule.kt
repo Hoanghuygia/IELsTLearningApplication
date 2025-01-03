@@ -1,7 +1,6 @@
 package com.example.ielstlearningapplication.di
 
 import android.content.Context
-import com.example.ielstlearningapplication.IEltsApplication
 import com.example.ielstlearningapplication.data.manager.LocalUserManagerImp
 import com.example.ielstlearningapplication.domain.manager.LocalUserManager
 import dagger.Module

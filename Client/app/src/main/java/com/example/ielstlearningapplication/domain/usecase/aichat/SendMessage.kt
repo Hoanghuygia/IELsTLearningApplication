@@ -1,7 +1,7 @@
 package com.example.ielstlearningapplication.domain.usecase.aichat
 
-import com.example.ielstlearningapplication.data.remote.dto.SendMessageRequest
-import com.example.ielstlearningapplication.data.remote.dto.SendMessageResponse
+import com.example.ielstlearningapplication.data.remote.dto.chat.SendMessageRequest
+import com.example.ielstlearningapplication.data.remote.dto.chat.SendMessageResponse
 import com.example.ielstlearningapplication.domain.repository.AIChatRepository
 import javax.inject.Inject
 

@@ -47,6 +47,7 @@ export class UserController {
 
             return res.status(201).json({
                 message: "User added successfully",
+                success: true,
                 user: {
                     email: newUser.email,
                     userName: newUser.userName

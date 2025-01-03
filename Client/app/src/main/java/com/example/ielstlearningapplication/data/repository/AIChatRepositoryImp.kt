@@ -1,12 +1,11 @@
 package com.example.ielstlearningapplication.data.repository
 
-import android.util.Log
 import com.example.ielstlearningapplication.data.remote.ChatApi
-import com.example.ielstlearningapplication.data.remote.dto.ChatResponseNew
-import com.example.ielstlearningapplication.data.remote.dto.SendMessageRequest
-import com.example.ielstlearningapplication.data.remote.dto.SendMessageResponse
-import com.example.ielstlearningapplication.data.remote.dto.SendMessageToGeminiReQuest
-import com.example.ielstlearningapplication.data.remote.dto.SendMessageToGeminiResponse
+import com.example.ielstlearningapplication.data.remote.dto.chat.ChatResponseNew
+import com.example.ielstlearningapplication.data.remote.dto.chat.SendMessageRequest
+import com.example.ielstlearningapplication.data.remote.dto.chat.SendMessageResponse
+import com.example.ielstlearningapplication.data.remote.dto.chat.SendMessageToGeminiReQuest
+import com.example.ielstlearningapplication.data.remote.dto.chat.SendMessageToGeminiResponse
 import com.example.ielstlearningapplication.domain.repository.AIChatRepository
 import javax.inject.Inject
 

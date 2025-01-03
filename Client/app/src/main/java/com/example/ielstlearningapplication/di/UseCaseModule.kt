@@ -2,6 +2,7 @@ package com.example.ielstlearningapplication.di
 
 import com.example.ielstlearningapplication.domain.manager.LocalUserManager
 import com.example.ielstlearningapplication.domain.repository.AIChatRepository
+import com.example.ielstlearningapplication.domain.repository.userRepository
 import com.example.ielstlearningapplication.domain.usecase.aichat.AIChatUseCase
 import com.example.ielstlearningapplication.domain.usecase.aichat.GetMessage
 import com.example.ielstlearningapplication.domain.usecase.aichat.SendMessage
@@ -9,6 +10,8 @@ import com.example.ielstlearningapplication.domain.usecase.aichat.SendMessageToG
 import com.example.ielstlearningapplication.domain.usecase.app.AppUseCases
 import com.example.ielstlearningapplication.domain.usecase.app.ReadAppInformation
 import com.example.ielstlearningapplication.domain.usecase.app.SaveAppInformation
+import com.example.ielstlearningapplication.domain.usecase.user.CreateUser
+import com.example.ielstlearningapplication.domain.usecase.user.UserUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -63,5 +66,19 @@ object UseCaseModule {
         sendMessageToGemini: SendMessageToGemini
     ): AIChatUseCase {
         return AIChatUseCase(getMessage, sendMessage, sendMessageToGemini)
+    }
+
+    @Provides
+    @Singleton
+    fun provideRegisterUser(repository: userRepository): CreateUser {
+        return CreateUser(repository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideUserUseCase(
+        createUser: CreateUser
+    ): UserUseCase {
+        return UserUseCase(createUser)
     }
 }

@@ -1,4 +1,4 @@
-package com.example.ielstlearningapplication.data.remote.dto
+package com.example.ielstlearningapplication.data.remote.dto.chat
 
 import com.example.ielstlearningapplication.domain.models.Data
 
