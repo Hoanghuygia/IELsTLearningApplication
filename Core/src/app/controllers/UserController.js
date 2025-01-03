@@ -27,7 +27,7 @@ export class UserController {
 
     addUser = async (req, res, next) => {
         try {
-            const { email, password } = req.body;
+            const { email, password, userName } = req.body;
 
             const existingUser = await User.findOne({ email });
 
@@ -40,6 +40,7 @@ export class UserController {
             const newUser = new User({
                 email,
                 password,
+                userName
             });
 
             await newUser.save();
@@ -48,6 +49,7 @@ export class UserController {
                 message: "User added successfully",
                 user: {
                     email: newUser.email,
+                    userName: newUser.userName
                 },
             });
         } catch (error) {
