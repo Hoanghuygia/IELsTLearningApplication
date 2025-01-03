@@ -1,5 +1,8 @@
 package com.example.ielstlearningapplication.domain.manager
 
-interface LocalUserManager {
+import kotlinx.coroutines.flow.Flow
 
+interface LocalUserManager {
+    suspend fun saveUserEmail(userEmail: String)
+    fun readUserEmail(): Flow<String>
 }

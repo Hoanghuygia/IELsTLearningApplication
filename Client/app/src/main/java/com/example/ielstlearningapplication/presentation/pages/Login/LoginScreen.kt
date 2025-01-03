@@ -22,6 +22,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.ielstlearningapplication.R
 import com.example.ielstlearningapplication.presentation.navGraph.Route
@@ -29,7 +30,7 @@ import com.example.ielstlearningapplication.presentation.pages.Login.Components.
 import com.example.ielstlearningapplication.presentation.pages.Login.Components.LoginPageButton
 
 @Composable
-fun LoginScreen(navController: NavController, viewModel: LoginModel = LoginModel(), onFacebookLogin: () -> Unit = {},
+fun LoginScreen(navController: NavController,  viewModel: LoginModel = hiltViewModel(), onFacebookLogin: () -> Unit = {},
                 onGoogleLogin: () -> Unit = {}) {
 
     var userGmail by remember { mutableStateOf("") }

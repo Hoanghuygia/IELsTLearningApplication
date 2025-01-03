@@ -1,6 +1,7 @@
 package com.example.ielstlearningapplication.presentation.navGraph
 
 import androidx.compose.runtime.Composable
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.compose.composable
@@ -49,7 +50,7 @@ fun NavGraph(startDestination: String) {
 //        }
 
         composable(route = Route.LoginScreen.route) {
-            val viewModel = LoginModel()
+            val viewModel: LoginModel = hiltViewModel()
             LoginScreen(
                 navController = navController,
                 viewModel = viewModel
