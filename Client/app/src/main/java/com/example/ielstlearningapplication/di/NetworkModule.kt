@@ -8,6 +8,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 import com.example.ielstlearningapplication.data.remote.ChatApi
+import com.example.ielstlearningapplication.data.remote.UserApi
 import okhttp3.OkHttpClient
 import java.util.concurrent.TimeUnit
 
@@ -40,5 +41,11 @@ object NetworkModule {
     @Singleton
     fun provideChatApi(retrofit: Retrofit): ChatApi {
         return retrofit.create(ChatApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideUserApi(retrofit: Retrofit): UserApi{
+        return retrofit.create(UserApi::class.java)
     }
 }

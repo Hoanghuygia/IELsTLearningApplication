@@ -67,10 +67,10 @@ fun NavGraph(startDestination: String) {
 //        }
 
         composable(route = Route.SignupScreen.route) {
-            val viewModel = SignUpModel()
+//            val viewModel = SignUpModel()
             SignUpScreen(
                 navController = navController,
-                viewModel = viewModel
+//                viewModel = viewModel
             )
         }
 

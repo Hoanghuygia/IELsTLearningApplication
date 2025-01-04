@@ -35,6 +35,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.ielstlearningapplication.ui.theme.IELsTLearningApplicationTheme
@@ -43,7 +44,7 @@ import com.example.ielstlearningapplication.presentation.navGraph.Route
 import com.example.ielstlearningapplication.presentation.pages.Login.LoginScreen
 
 @Composable
-fun SignUpScreen(navController: NavController,  viewModel: SignUpModel = SignUpModel()) {
+fun SignUpScreen(navController: NavController, viewModel: SignUpModel = hiltViewModel()) {
     var userName by remember { mutableStateOf("") }
     var userGmail by remember { mutableStateOf("") }
     var userPhone by remember { mutableStateOf("") }
@@ -145,6 +146,7 @@ fun SignUpScreen(navController: NavController,  viewModel: SignUpModel = SignUpM
                     viewModel.signUp(
                         email = userGmail,
                         password = userPassword,
+                        userName = userName,
                         onSuccess = {
                             navController.navigate(Route.LoginScreen.route)
                         },
