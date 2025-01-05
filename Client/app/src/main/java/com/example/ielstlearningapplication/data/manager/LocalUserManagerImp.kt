@@ -34,5 +34,4 @@ class LocalUserManagerImp(
             preferences[PreferenceKeys.USER_GMAIL] ?: ""
         }
     }
-
 }

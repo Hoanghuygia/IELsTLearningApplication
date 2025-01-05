@@ -1,5 +1,6 @@
 package com.example.ielstlearningapplication.presentation.pages.AIChat
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -24,8 +25,9 @@ fun AIChatScreen(viewModel: AIChatViewModel = hiltViewModel(),
 ) {
     val uiState = viewModel.uiState.collectAsState().value
 
-    LaunchedEffect(key1 = Unit) {
-        viewModel.getMessages("673f74a018bae505241f5981")
+    LaunchedEffect(key1 = uiState.userId) {
+        Log.d("UserID at AIChatScreen", uiState.userId)
+        viewModel.getMessages(uiState.userId)
     }
 
     Scaffold(

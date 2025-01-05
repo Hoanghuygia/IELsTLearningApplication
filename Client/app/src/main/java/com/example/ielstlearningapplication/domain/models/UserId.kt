@@ -5,5 +5,6 @@ data class User(
     val _id: String,
     val email: String,
     val notify: List<Any>,
-    val wordList: List<Any>
+    val wordList: List<Any>,
+    val userName: String,
 )

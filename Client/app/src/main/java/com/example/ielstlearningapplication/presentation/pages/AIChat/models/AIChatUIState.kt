@@ -8,5 +8,6 @@ data class AIChatUIState(
     var currentChat: Int = 0,
     var chatLabel: String = "",
     var isLoading: Boolean = false,
-    var error: String = "No Error"
+    var error: String = "No Error",
+    var userId: String = ""
 )

@@ -14,7 +14,9 @@ import User from "../models/User.model.js";
 export class UserController {
     getAllUser = async (req, res, next) => {
         try {
-            const users = await User.find().populate('wordList.part_of_speech').populate('historyWorking');
+            const users = await User.find()
+                .populate("wordList.part_of_speech")
+                .populate("historyWorking");
             return res.status(200).json({ success: true, data: users });
         } catch (error) {
             console.error("Error in getAllUser:", error);
@@ -23,7 +25,24 @@ export class UserController {
                 .json({ message: "Server error", error: error.message });
         }
     };
-    
+
+    getUserIdByEmail = async (req, res, next) => {
+        const { email } = req.params;
+        try {
+            const user = await User.findOne({ email }).select("_id");
+
+            if (!user) {
+                return res.status(404).json({ message: "User not found" });
+            }
+
+            return res.status(200).json({ user_id: user._id });
+        } catch (error) {
+            console.error("Error in getUserIdByEmail:", error);
+            return res
+                .status(500)
+                .json({ message: "Server error", error: error.message });
+        }
+    };
 
     addUser = async (req, res, next) => {
         try {
@@ -40,7 +59,7 @@ export class UserController {
             const newUser = new User({
                 email,
                 password,
-                userName
+                userName,
             });
 
             await newUser.save();
@@ -49,8 +68,9 @@ export class UserController {
                 message: "User added successfully",
                 success: true,
                 user: {
+                    user_id: newUser._id,
                     email: newUser.email,
-                    userName: newUser.userName
+                    userName: newUser.userName,
                 },
             });
         } catch (error) {

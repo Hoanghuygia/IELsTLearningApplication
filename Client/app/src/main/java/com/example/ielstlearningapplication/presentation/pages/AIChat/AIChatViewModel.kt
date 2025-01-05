@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ielstlearningapplication.domain.models.Message
 import com.example.ielstlearningapplication.domain.usecase.aichat.AIChatUseCase
+import com.example.ielstlearningapplication.domain.usecase.app.AppUseCases
 import com.example.ielstlearningapplication.presentation.pages.AIChat.models.AIChatUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,10 +18,23 @@ import java.util.Calendar
 
 @HiltViewModel
 class AIChatViewModel @Inject constructor(
-    private val aichatUseCase: AIChatUseCase
+    private val aichatUseCase: AIChatUseCase,
+    private val appUseCases: AppUseCases
 ) : ViewModel() {
     private val _uiState = MutableStateFlow(AIChatUIState())
     val uiState: StateFlow<AIChatUIState> = _uiState.asStateFlow()
+
+    init {
+        Log.d("Init ai chat view model", "huy")
+        viewModelScope.launch {
+            appUseCases.readAppInformation()
+                .collect { userId ->
+                    _uiState.update { currentState ->
+                        currentState.copy(userId = userId)
+                    }
+                }
+        }
+    }
 
     /*
     In this function we need

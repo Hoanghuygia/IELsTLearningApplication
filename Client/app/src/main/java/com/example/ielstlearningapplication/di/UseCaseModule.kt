@@ -11,6 +11,7 @@ import com.example.ielstlearningapplication.domain.usecase.app.AppUseCases
 import com.example.ielstlearningapplication.domain.usecase.app.ReadAppInformation
 import com.example.ielstlearningapplication.domain.usecase.app.SaveAppInformation
 import com.example.ielstlearningapplication.domain.usecase.user.CreateUser
+import com.example.ielstlearningapplication.domain.usecase.user.GetUserIdFromEmail
 import com.example.ielstlearningapplication.domain.usecase.user.UserUseCase
 import dagger.Module
 import dagger.Provides
@@ -27,18 +28,6 @@ object UseCaseModule {
         readAppInformation = ReadAppInformation(localUserManager),
         saveAppInformation = SaveAppInformation(localUserManager)
     )
-
-//    @Provides
-//    @Singleton
-//    fun provideAppUseCases(
-//        localUserManager: LocalUserManager
-//    ): AppUseCases {
-//        return AppUseCases(
-//            saveAppInformation = SaveAppInformation(localUserManager),
-//            readAppInformation = ReadAppInformation(localUserManager)
-//        )
-//    }
-
 
     @Provides
     @Singleton
@@ -74,11 +63,17 @@ object UseCaseModule {
         return CreateUser(repository)
     }
 
+//    @Provides
+//    @Singleton
+//    fun provideGetUserFromEmail(repository: userRepository): GetUserIdFromEmail{
+//        return GetUserIdFromEmail(repository)
+//    }
+
     @Provides
     @Singleton
     fun provideUserUseCase(
-        createUser: CreateUser
+        createUser: CreateUser, getUserIdFromEmail: GetUserIdFromEmail
     ): UserUseCase {
-        return UserUseCase(createUser)
+        return UserUseCase(createUser, getUserIdFromEmail)
     }
 }

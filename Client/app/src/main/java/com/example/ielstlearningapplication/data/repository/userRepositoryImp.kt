@@ -1,6 +1,7 @@
 package com.example.ielstlearningapplication.data.repository
 
 import com.example.ielstlearningapplication.data.remote.UserApi
+import com.example.ielstlearningapplication.data.remote.dto.user.GetUserByEmailResponse
 import com.example.ielstlearningapplication.data.remote.dto.user.RegisterRequest
 import com.example.ielstlearningapplication.data.remote.dto.user.RegisterResponse
 import com.example.ielstlearningapplication.domain.repository.userRepository
@@ -13,6 +14,14 @@ class userRepositoryImp @Inject constructor(
         return try {
             Result.success(userService.registerUser(request))
         }catch (e: Exception){
+            Result.failure(e)
+        }
+    }
+
+    override suspend fun getUserIdFromEmail(email: String): Result<GetUserByEmailResponse> {
+        return try {
+            Result.success(userService.getUserIdByEmail(email))
+        } catch (e: Exception){
             Result.failure(e)
         }
     }

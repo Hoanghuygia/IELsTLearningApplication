@@ -25,14 +25,6 @@ class SignUpModel @Inject constructor(
     val uiState: StateFlow<SignUpUiState> = _uiState.asStateFlow()
 
     fun signUp(email: String, password: String, userName: String, onSuccess: () -> Unit, onError: (String) -> Unit) {
-        viewModelScope.launch{
-            try {
-                userUseCase.createUser(email = email, password = password, userName = userName)
-
-            }catch (e: Exception){
-
-            }
-        }
         viewModelScope.launch {
             val result = runCatching {
                 userUseCase.createUser(email = email, password = password, userName = userName)
