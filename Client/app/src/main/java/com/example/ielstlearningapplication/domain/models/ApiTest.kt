@@ -2,7 +2,7 @@ package com.example.ielstlearningapplication.domain.models
 
 data class ApiTest (
     val _id: String,
-    val label: String,
+    val name: String,
     val type: String,
     val content: ApiContent
 )

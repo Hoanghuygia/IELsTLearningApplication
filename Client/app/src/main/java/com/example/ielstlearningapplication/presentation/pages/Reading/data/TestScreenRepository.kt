@@ -16,7 +16,7 @@ class TestScreenRepository {
 
                 FakeTestScreen(
                     id = reading._id,
-                    title = reading.label,
+                    title = reading.name,
 //                    title= numQuestions.toString(),
                     id_content= reading.content._id,
                     p1_num_question = numQuestions
